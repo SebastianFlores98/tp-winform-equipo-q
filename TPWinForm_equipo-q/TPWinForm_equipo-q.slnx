@@ -1,3 +1,6 @@
 <Solution>
-  <Project Path="TPWinForm_equipo-q/TPWinForm_equipo-q.csproj" />
+  <Project Path="Datos/Datos.csproj" Id="0326a06f-0017-460b-922a-ffd60ca16388" />
+  <Project Path="Dominio/Dominio.csproj" Id="6fc24686-e04b-4680-a9e0-b7359e79b2aa" />
+  <Project Path="Negocio/Negocio.csproj" Id="b00928aa-0fdf-4d9b-bd14-878cdea6fd2f" />
+  <Project Path="TPWinForm_equipo-q/Presentacion.csproj" Id="4f713930-958f-464e-bc4f-ed770cf09924" />
 </Solution>
