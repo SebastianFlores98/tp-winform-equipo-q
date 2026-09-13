@@ -52,7 +52,9 @@ namespace Datos
         public void cerrarConexion()
         {
             if (lector != null)
+            {
                 lector.Close();
+            }
             conexion.Close();
         }
     }
