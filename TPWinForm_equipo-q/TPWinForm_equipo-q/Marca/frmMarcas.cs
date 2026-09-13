@@ -41,5 +41,10 @@ namespace TPWinForm_equipo_q
             frmDetalle frmDetalleVentana = new frmDetalle();
             frmDetalleVentana.ShowDialog();
         }
+
+        private void frmMarcas_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

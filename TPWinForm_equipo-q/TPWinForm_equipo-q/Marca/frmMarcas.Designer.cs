@@ -117,6 +117,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "frmMarcas";
             this.Text = "frmMarcas";
+            this.Load += new System.EventHandler(this.frmMarcas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

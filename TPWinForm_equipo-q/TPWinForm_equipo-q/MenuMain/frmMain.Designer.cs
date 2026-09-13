@@ -71,6 +71,7 @@
             this.BtnMainCategorias.TabIndex = 3;
             this.BtnMainCategorias.Text = "Categorias";
             this.BtnMainCategorias.UseVisualStyleBackColor = true;
+            this.BtnMainCategorias.Click += new System.EventHandler(this.BtnMainCategorias_Click);
             // 
             // frmMain
             // 
