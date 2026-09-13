@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Datos
 {
-    internal class ConexionDatos
+    public class ConexionDatos
     {
         private SqlConnection conexion;
         private SqlCommand comando;
