@@ -47,6 +47,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Articulo\frmAgregar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Articulo\frmAgregar.Designer.cs">
+      <DependentUpon>frmAgregar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Articulo\frmArticulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Articulo\frmArticulos.Designer.cs">
+      <DependentUpon>frmArticulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Articulo\frmDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Articulo\frmDetalle.Designer.cs">
+      <DependentUpon>frmDetalle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Articulo\frmEliminar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Articulo\frmEliminar.Designer.cs">
+      <DependentUpon>frmEliminar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Articulo\frmModificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Articulo\frmModificar.Designer.cs">
+      <DependentUpon>frmModificar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Categoria\frmCategorias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +121,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Articulo\frmArticulos.resx">
+      <DependentUpon>frmArticulos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Categoria\frmCategorias.resx">
       <DependentUpon>frmCategorias.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,9 +167,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Articulo\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Dominio\Dominio.csproj">
       <Project>{6fc24686-e04b-4680-a9e0-b7359e79b2aa}</Project>

@@ -38,26 +38,30 @@
             // 
             this.LabelMain.AutoSize = true;
             this.LabelMain.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelMain.Location = new System.Drawing.Point(290, 98);
+            this.LabelMain.Location = new System.Drawing.Point(387, 121);
+            this.LabelMain.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelMain.Name = "LabelMain";
-            this.LabelMain.Size = new System.Drawing.Size(206, 26);
+            this.LabelMain.Size = new System.Drawing.Size(259, 31);
             this.LabelMain.TabIndex = 0;
             this.LabelMain.Text = "Gestion de Articulos";
             // 
             // BtnMainArticulos
             // 
-            this.BtnMainArticulos.Location = new System.Drawing.Point(354, 202);
+            this.BtnMainArticulos.Location = new System.Drawing.Point(472, 249);
+            this.BtnMainArticulos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnMainArticulos.Name = "BtnMainArticulos";
-            this.BtnMainArticulos.Size = new System.Drawing.Size(75, 23);
+            this.BtnMainArticulos.Size = new System.Drawing.Size(100, 28);
             this.BtnMainArticulos.TabIndex = 1;
             this.BtnMainArticulos.Text = "Articulos";
             this.BtnMainArticulos.UseVisualStyleBackColor = true;
+            this.BtnMainArticulos.Click += new System.EventHandler(this.BtnMainArticulos_Click);
             // 
             // BtnMainMarcas
             // 
-            this.BtnMainMarcas.Location = new System.Drawing.Point(354, 247);
+            this.BtnMainMarcas.Location = new System.Drawing.Point(472, 304);
+            this.BtnMainMarcas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnMainMarcas.Name = "BtnMainMarcas";
-            this.BtnMainMarcas.Size = new System.Drawing.Size(75, 23);
+            this.BtnMainMarcas.Size = new System.Drawing.Size(100, 28);
             this.BtnMainMarcas.TabIndex = 2;
             this.BtnMainMarcas.Text = "Marcas";
             this.BtnMainMarcas.UseVisualStyleBackColor = true;
@@ -65,9 +69,10 @@
             // 
             // BtnMainCategorias
             // 
-            this.BtnMainCategorias.Location = new System.Drawing.Point(354, 289);
+            this.BtnMainCategorias.Location = new System.Drawing.Point(472, 356);
+            this.BtnMainCategorias.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnMainCategorias.Name = "BtnMainCategorias";
-            this.BtnMainCategorias.Size = new System.Drawing.Size(75, 23);
+            this.BtnMainCategorias.Size = new System.Drawing.Size(100, 28);
             this.BtnMainCategorias.TabIndex = 3;
             this.BtnMainCategorias.Text = "Categorias";
             this.BtnMainCategorias.UseVisualStyleBackColor = true;
@@ -75,13 +80,14 @@
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.BtnMainCategorias);
             this.Controls.Add(this.BtnMainMarcas);
             this.Controls.Add(this.BtnMainArticulos);
             this.Controls.Add(this.LabelMain);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
