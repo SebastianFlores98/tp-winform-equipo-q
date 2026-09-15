@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TPWinForm_equipo_q.Marca
+namespace TPWinForm_equipo_q.Categoria
 {
-    public partial class frmAgregar : Form
+    public partial class frmModificarCategoria : Form
     {
-        public frmAgregar()
+        public frmModificarCategoria()
         {
             InitializeComponent();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

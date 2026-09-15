@@ -17,6 +17,22 @@ namespace TPWinForm_equipo_q.Categoria
             InitializeComponent();
         }
 
+        private void btnAgregarCategoria_Click(object sender, EventArgs e)
+        {
+            frmCategoriaAgregar agregarCategoria = new frmCategoriaAgregar();
+            agregarCategoria.ShowDialog();
+        }
 
+        private void btnModificarCategoria_Click(object sender, EventArgs e)
+        {
+            frmModificarCategoria modificarCategoria = new frmModificarCategoria();
+            modificarCategoria.ShowDialog();
+        }
+
+        private void btnEliminarCategoria_Click(object sender, EventArgs e)
+        {
+            frmEliminarCategoria eliminarCategoria = new frmEliminarCategoria();
+            eliminarCategoria.ShowDialog();
+        }
     }
 }

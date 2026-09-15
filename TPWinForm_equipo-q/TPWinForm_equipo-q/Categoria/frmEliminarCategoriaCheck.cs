@@ -8,18 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TPWinForm_equipo_q.Marca
+namespace TPWinForm_equipo_q.Categoria
 {
-    public partial class frmAgregar : Form
+    public partial class frmEliminarCategoriaCheck : Form
     {
-        public frmAgregar()
+        public frmEliminarCategoriaCheck()
         {
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            Close(); 
         }
     }
 }
