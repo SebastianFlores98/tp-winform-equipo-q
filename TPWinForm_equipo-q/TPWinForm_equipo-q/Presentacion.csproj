@@ -65,12 +65,6 @@
     <Compile Include="Articulo\frmDetalle.Designer.cs">
       <DependentUpon>frmDetalle.cs</DependentUpon>
     </Compile>
-    <Compile Include="Articulo\frmEliminar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Articulo\frmEliminar.Designer.cs">
-      <DependentUpon>frmEliminar.cs</DependentUpon>
-    </Compile>
     <Compile Include="Articulo\frmModificar.cs">
       <SubType>Form</SubType>
     </Compile>

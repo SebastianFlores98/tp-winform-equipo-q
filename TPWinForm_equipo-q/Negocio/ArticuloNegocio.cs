@@ -10,19 +10,20 @@ namespace Negocio
 {
     public class ArticuloNegocio
     {
-        public List<Articulo> listar()
+        public List<Articulo> Listar()
         {
             List<Articulo> lista = new List<Articulo>();
             ConexionDatos datosArticulo = new ConexionDatos();
 
             try
             {
-                datosArticulo.setearConsulta(" SELECT Codigo, Nombre, Descripcion, Precio FROM ARTICULOS ");
+                datosArticulo.setearConsulta(" SELECT Id,Codigo, Nombre, Descripcion, Precio FROM ARTICULOS ");
                 datosArticulo.ejecutarLectura();
 
                 while (datosArticulo.Lector.Read())
                 {
                     Articulo aux = new Articulo();
+                    aux.Id = (int)datosArticulo.Lector["Id"];
                     aux.CodigoArticulo = (string)datosArticulo.Lector["Codigo"];
                     aux.Nombre = (string)datosArticulo.Lector["Nombre"];
                     aux.Descripcion = (string)datosArticulo.Lector["Descripcion"];
@@ -42,5 +43,26 @@ namespace Negocio
                 datosArticulo.cerrarConexion();
             }
         }
+
+        public void Eliminar(int id)
+        {
+            ConexionDatos datos = new ConexionDatos();
+
+            try
+            {
+                datos.setearConsulta("DELETE FROM ARTICULOS WHERE Id = @id");
+                datos.agregarParametro("@id", id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     }
 }
