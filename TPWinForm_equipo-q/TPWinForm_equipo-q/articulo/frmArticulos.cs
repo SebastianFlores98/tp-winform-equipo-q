@@ -55,7 +55,7 @@ namespace TPWinForm_equipo_q.Articulo
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            frmModificar frmModificarArticulo = new frmModificar();
+            frmABM frmModificarArticulo = new frmABM();
             frmModificarArticulo.ShowDialog();
         }
 

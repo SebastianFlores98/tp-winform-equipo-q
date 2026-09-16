@@ -47,29 +47,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Articulo\frmAgregar.cs">
+    <Compile Include="Articulo\frmABM.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Articulo\frmAgregar.Designer.cs">
-      <DependentUpon>frmAgregar.cs</DependentUpon>
+    <Compile Include="Articulo\frmABM.Designer.cs">
+      <DependentUpon>frmABM.cs</DependentUpon>
     </Compile>
     <Compile Include="Articulo\frmArticulos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Articulo\frmArticulos.Designer.cs">
       <DependentUpon>frmArticulos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Articulo\frmDetalle.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Articulo\frmDetalle.Designer.cs">
-      <DependentUpon>frmDetalle.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Articulo\frmModificar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Articulo\frmModificar.Designer.cs">
-      <DependentUpon>frmModificar.cs</DependentUpon>
     </Compile>
     <Compile Include="Categoria\frmAgregarCategoria.cs">
       <SubType>Form</SubType>
@@ -139,6 +127,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Articulo\frmABM.resx">
+      <DependentUpon>frmABM.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Articulo\frmArticulos.resx">
       <DependentUpon>frmArticulos.cs</DependentUpon>
     </EmbeddedResource>

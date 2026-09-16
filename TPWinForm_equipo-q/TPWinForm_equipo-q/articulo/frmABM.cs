@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace TPWinForm_equipo_q.Articulo
 {
-    public partial class frmDetalle : Form
+    public partial class frmABM : Form
     {
-        public frmDetalle()
+        public frmABM()
         {
             InitializeComponent();
         }

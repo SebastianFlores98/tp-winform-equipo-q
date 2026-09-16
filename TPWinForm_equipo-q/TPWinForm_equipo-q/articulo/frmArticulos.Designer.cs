@@ -48,7 +48,7 @@
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.RowHeadersWidth = 51;
             this.dgvArticulos.RowTemplate.Height = 24;
-            this.dgvArticulos.Size = new System.Drawing.Size(900, 256);
+            this.dgvArticulos.Size = new System.Drawing.Size(1011, 256);
             this.dgvArticulos.TabIndex = 0;
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
@@ -96,7 +96,7 @@
             // 
             // textBoxBuscador
             // 
-            this.textBoxBuscador.Location = new System.Drawing.Point(808, 62);
+            this.textBoxBuscador.Location = new System.Drawing.Point(919, 68);
             this.textBoxBuscador.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxBuscador.Name = "textBoxBuscador";
             this.textBoxBuscador.Size = new System.Drawing.Size(132, 22);
@@ -115,7 +115,7 @@
             // 
             // pbxArticulo
             // 
-            this.pbxArticulo.Location = new System.Drawing.Point(985, 97);
+            this.pbxArticulo.Location = new System.Drawing.Point(1114, 97);
             this.pbxArticulo.Name = "pbxArticulo";
             this.pbxArticulo.Size = new System.Drawing.Size(281, 256);
             this.pbxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -126,7 +126,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1316, 450);
+            this.ClientSize = new System.Drawing.Size(1429, 380);
             this.Controls.Add(this.pbxArticulo);
             this.Controls.Add(this.lblArticulos);
             this.Controls.Add(this.btnDetalle);
