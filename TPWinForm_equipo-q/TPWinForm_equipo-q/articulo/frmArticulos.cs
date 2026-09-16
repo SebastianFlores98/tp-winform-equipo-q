@@ -23,8 +23,7 @@ namespace TPWinForm_equipo_q.Articulo
 
         private void frmArticulos_Load(object sender, EventArgs e)
         {
-            Cargar();
-            
+            Cargar();         
         }
 
         private void Cargar()
@@ -32,13 +31,8 @@ namespace TPWinForm_equipo_q.Articulo
             ArticuloNegocio listado = new ArticuloNegocio();
             listaArticulo = listado.Listar();
             dgvArticulos.DataSource = listaArticulo;
+            dgvArticulos.Columns["UrlImagen"].Visible = false;
             cargarImagen(listaArticulo[0].UrlImagen);
-        }
-
-        private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
-        {
-            Dominio.Articulo seleccionado = (Dominio.Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            cargarImagen(seleccionado.UrlImagen);
         }
 
         private void cargarImagen(string imagen)
@@ -51,6 +45,12 @@ namespace TPWinForm_equipo_q.Articulo
             {
                 pbxArticulo.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS5DKzdprfHmIYRpEfNNPVRYPDfh0Bvjjw_Ud_yRIwSw&s=10");
             }
+        }
+
+        private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
+        {
+            Dominio.Articulo seleccionado = (Dominio.Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            cargarImagen(seleccionado.UrlImagen);
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
