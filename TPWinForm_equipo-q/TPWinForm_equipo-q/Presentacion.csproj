@@ -59,71 +59,23 @@
     <Compile Include="Articulo\frmArticulos.Designer.cs">
       <DependentUpon>frmArticulos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Categoria\frmAgregarCategoria.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Categoria\frmAgregarCategoria.Designer.cs">
-      <DependentUpon>frmAgregarCategoria.cs</DependentUpon>
-    </Compile>
     <Compile Include="Categoria\frmCategorias.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Categoria\frmCategorias.Designer.cs">
       <DependentUpon>frmCategorias.cs</DependentUpon>
     </Compile>
-    <Compile Include="Categoria\frmEliminarCategoria.cs">
+    <Compile Include="Marca\frmMarcas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Categoria\frmEliminarCategoria.Designer.cs">
-      <DependentUpon>frmEliminarCategoria.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Categoria\frmEliminarCategoriaCheck.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Categoria\frmEliminarCategoriaCheck.Designer.cs">
-      <DependentUpon>frmEliminarCategoriaCheck.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Categoria\frmModificarCategoria.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Categoria\frmModificarCategoria.Designer.cs">
-      <DependentUpon>frmModificarCategoria.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Marca\frmAgregar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Marca\frmAgregar.Designer.cs">
-      <DependentUpon>frmAgregar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Marca\frmDetalle.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Marca\frmDetalle.Designer.cs">
-      <DependentUpon>frmDetalle.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Marca\frmEliminarCheck.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Marca\frmEliminarCheck.Designer.cs">
-      <DependentUpon>frmEliminarCheck.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Marca\frmModificar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Marca\frmModificar.Designer.cs">
-      <DependentUpon>frmModificar.cs</DependentUpon>
+    <Compile Include="Marca\frmMarcas.Designer.cs">
+      <DependentUpon>frmMarcas.cs</DependentUpon>
     </Compile>
     <Compile Include="MenuMain\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MenuMain\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Marca\frmMarcas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Marca\frmMarcas.Designer.cs">
-      <DependentUpon>frmMarcas.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -133,38 +85,14 @@
     <EmbeddedResource Include="Articulo\frmArticulos.resx">
       <DependentUpon>frmArticulos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Categoria\frmAgregarCategoria.resx">
-      <DependentUpon>frmAgregarCategoria.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Categoria\frmCategorias.resx">
       <DependentUpon>frmCategorias.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Categoria\frmEliminarCategoria.resx">
-      <DependentUpon>frmEliminarCategoria.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Categoria\frmEliminarCategoriaCheck.resx">
-      <DependentUpon>frmEliminarCategoriaCheck.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Categoria\frmModificarCategoria.resx">
-      <DependentUpon>frmModificarCategoria.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Marca\frmAgregar.resx">
-      <DependentUpon>frmAgregar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Marca\frmDetalle.resx">
-      <DependentUpon>frmDetalle.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Marca\frmEliminarCheck.resx">
-      <DependentUpon>frmEliminarCheck.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Marca\frmModificar.resx">
-      <DependentUpon>frmModificar.cs</DependentUpon>
+    <EmbeddedResource Include="Marca\frmMarcas.resx">
+      <DependentUpon>frmMarcas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuMain\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Marca\frmMarcas.resx">
-      <DependentUpon>frmMarcas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

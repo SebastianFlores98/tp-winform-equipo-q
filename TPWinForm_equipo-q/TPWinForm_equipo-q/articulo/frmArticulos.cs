@@ -14,7 +14,7 @@ namespace TPWinForm_equipo_q.Articulo
 {
     public partial class frmArticulos : Form
     {
-        private List<Dominio.Articulo> listaArticulo; // Los datos que obtengo de la BD los guardo en este atributo privado de la clase frmArticulos
+        private List<Dominio.Articulo> listaArticulo;
 
         public frmArticulos()
         {
@@ -32,6 +32,7 @@ namespace TPWinForm_equipo_q.Articulo
             listaArticulo = listado.Listar();
             dgvArticulos.DataSource = listaArticulo;
             dgvArticulos.Columns["UrlImagen"].Visible = false;
+            dgvArticulos.Columns["Id"].Visible = false;
             cargarImagen(listaArticulo[0].UrlImagen);
         }
 
@@ -53,11 +54,6 @@ namespace TPWinForm_equipo_q.Articulo
             cargarImagen(seleccionado.UrlImagen);
         }
 
-        private void btnModificar_Click(object sender, EventArgs e)
-        {
-            frmABM frmModificarArticulo = new frmABM();
-            frmModificarArticulo.ShowDialog();
-        }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -74,8 +70,28 @@ namespace TPWinForm_equipo_q.Articulo
                 ArticuloNegocio negocio = new ArticuloNegocio();
                 negocio.Eliminar(seleccionado.Id);
                 MessageBox.Show("Artículo eliminado con éxito.");
-                Cargar(); // ajustá el nombre si tu método de carga de grilla se llama distinto
+                Cargar(); 
             }
+        }
+
+        private void btnDetalle_Click(object sender, EventArgs e)
+        {
+            Dominio.Articulo seleccionado = (Dominio.Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            frmABM frmDetalleArticulo = new frmABM(seleccionado, true);
+            frmDetalleArticulo.ShowDialog();
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Dominio.Articulo seleccionado = (Dominio.Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            frmABM frmModificarArticulo = new frmABM(seleccionado);
+            frmModificarArticulo.ShowDialog();
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmABM frmModificarArticulo = new frmABM();
+            frmModificarArticulo.ShowDialog();
         }
     }
 }

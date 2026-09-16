@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TPWinForm_equipo_q.Categoria;
+
 using TPWinForm_equipo_q.Articulo;
+using TPWinForm_equipo_q.Categoria;
+using TPWinForm_equipo_q.Marca;
 
 namespace TPWinForm_equipo_q
 {
@@ -27,8 +29,8 @@ namespace TPWinForm_equipo_q
 
         private void BtnMainCategorias_Click(object sender, EventArgs e)
         {
-            frmCategorias frmCategoriaMenu = new frmCategorias();
-            frmCategoriaMenu.ShowDialog();
+            frmCategorias frmCategoriasMenu = new frmCategorias();
+            frmCategoriasMenu.ShowDialog();
         }
 
         private void BtnMainArticulos_Click(object sender, EventArgs e)
