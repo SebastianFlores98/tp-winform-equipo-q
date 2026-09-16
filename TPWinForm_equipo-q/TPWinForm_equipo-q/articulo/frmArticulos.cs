@@ -14,6 +14,8 @@ namespace TPWinForm_equipo_q.Articulo
 {
     public partial class frmArticulos : Form
     {
+        private List<Dominio.Articulo> listaArticulo; // Los datos que obtengo de la BD los guardo en este atributo privado de la clase frmArticulos
+
         public frmArticulos()
         {
             InitializeComponent();
@@ -22,19 +24,43 @@ namespace TPWinForm_equipo_q.Articulo
         private void frmArticulos_Load(object sender, EventArgs e)
         {
             Cargar();
+            
         }
 
         private void Cargar()
         {
             ArticuloNegocio listado = new ArticuloNegocio();
-            dgvArticulos.DataSource = listado.Listar();
+            listaArticulo = listado.Listar();
+            dgvArticulos.DataSource = listaArticulo;
+            cargarImagen(listaArticulo[0].UrlImagen);
         }
 
+        private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
+        {
+            Dominio.Articulo seleccionado = (Dominio.Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            cargarImagen(seleccionado.UrlImagen);
+        }
+
+        private void cargarImagen(string imagen)
+        {
+            try
+            {
+               pbxArticulo.Load(imagen);
+            }
+            catch (Exception ex)
+            {
+                pbxArticulo.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS5DKzdprfHmIYRpEfNNPVRYPDfh0Bvjjw_Ud_yRIwSw&s=10");
+            }
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            frmModificar frmModificarArticulo = new frmModificar();
+            frmModificarArticulo.ShowDialog();
+        }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            
-
             Dominio.Articulo seleccionado = (Dominio.Articulo)dgvArticulos.CurrentRow.DataBoundItem;
 
             DialogResult respuesta = MessageBox.Show(

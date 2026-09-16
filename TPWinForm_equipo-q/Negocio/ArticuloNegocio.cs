@@ -17,7 +17,21 @@ namespace Negocio
 
             try
             {
-                datosArticulo.setearConsulta(" SELECT Id,Codigo, Nombre, Descripcion, Precio FROM ARTICULOS ");
+                datosArticulo.setearConsulta(
+                    "SELECT " +
+                        "ART.Id, " +
+                        "ART.Codigo, " +
+                        "ART.Nombre, " +
+                        "ART.Descripcion, " +
+                        "MAR.Descripcion AS DescripcionMarca, " +
+                        "CAT.Descripcion AS DescripcionCategoria, " +
+                        "ART.Precio, " + 
+                        "IMG.ImagenUrl " +
+                    "FROM ARTICULOS ART " +
+                    "INNER JOIN MARCAS MAR ON MAR.Id = ART.IdMarca " +
+                    "INNER JOIN CATEGORIAS CAT ON CAT.Id = ART.IdCategoria " +
+                    "INNER JOIN IMAGENES IMG ON IMG.IdArticulo = ART.Id"
+                );
                 datosArticulo.ejecutarLectura();
 
                 while (datosArticulo.Lector.Read())
@@ -27,7 +41,12 @@ namespace Negocio
                     aux.CodigoArticulo = (string)datosArticulo.Lector["Codigo"];
                     aux.Nombre = (string)datosArticulo.Lector["Nombre"];
                     aux.Descripcion = (string)datosArticulo.Lector["Descripcion"];
+                    aux.Marca = new Marca();
+                    aux.Marca.Descripcion = (string)datosArticulo.Lector["DescripcionMarca"];
+                    aux.Categoria = new Categoria();
+                    aux.Categoria.Descripcion = (string)datosArticulo.Lector["DescripcionCategoria"];
                     aux.Precio = (decimal)datosArticulo.Lector["Precio"];
+                    aux.UrlImagen = (string)datosArticulo.Lector["ImagenUrl"];
 
                     lista.Add(aux);
                 }
@@ -56,7 +75,7 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
             finally
             {
