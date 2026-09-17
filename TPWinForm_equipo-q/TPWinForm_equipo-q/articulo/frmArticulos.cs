@@ -31,9 +31,14 @@ namespace TPWinForm_equipo_q.Articulo
             ArticuloNegocio listado = new ArticuloNegocio();
             listaArticulo = listado.Listar();
             dgvArticulos.DataSource = listaArticulo;
+            ocultarColumnas();
+            cargarImagen(listaArticulo[0].UrlImagen);
+        }
+
+        private void ocultarColumnas()
+        {
             dgvArticulos.Columns["UrlImagen"].Visible = false;
             dgvArticulos.Columns["Id"].Visible = false;
-            cargarImagen(listaArticulo[0].UrlImagen);
         }
 
         private void cargarImagen(string imagen)
@@ -50,8 +55,12 @@ namespace TPWinForm_equipo_q.Articulo
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
-            Dominio.Articulo seleccionado = (Dominio.Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            cargarImagen(seleccionado.UrlImagen);
+            if (dgvArticulos.CurrentRow != null)
+            {
+                Dominio.Articulo seleccionado = (Dominio.Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                cargarImagen(seleccionado.UrlImagen);
+            }
+            
         }
 
 
@@ -92,6 +101,32 @@ namespace TPWinForm_equipo_q.Articulo
         {
             frmABM frmModificarArticulo = new frmABM();
             frmModificarArticulo.ShowDialog();
+        }
+
+       
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+
+            List<Dominio.Articulo> listaFiltrada;
+            string filtro = txtFiltro.Text;
+            if (filtro.Length >= 3)
+            {
+                listaFiltrada = listaArticulo.FindAll(x => x.Nombre.ToLower().Contains(filtro.ToLower())
+                || x.Categoria.Descripcion.ToLower().Contains(filtro.ToLower())
+                || x.Marca.Descripcion.ToLower().Contains(filtro.ToLower())
+                || x.CodigoArticulo.ToLower().Contains(filtro.ToLower())
+                );
+
+            }
+            else
+            {
+                listaFiltrada = listaArticulo;
+            }
+
+            dgvArticulos.DataSource = null;
+            dgvArticulos.DataSource = listaFiltrada;
+            ocultarColumnas();
         }
     }
 }
