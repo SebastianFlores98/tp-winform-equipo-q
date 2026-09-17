@@ -113,7 +113,7 @@
             // 
             // pbxArticulo
             // 
-            this.pbxArticulo.Location = new System.Drawing.Point(716, 79);
+            this.pbxArticulo.Location = new System.Drawing.Point(836, 79);
             this.pbxArticulo.Margin = new System.Windows.Forms.Padding(2);
             this.pbxArticulo.Name = "pbxArticulo";
             this.pbxArticulo.Size = new System.Drawing.Size(211, 208);
@@ -126,15 +126,15 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(476, 57);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 15;
-            this.label1.Text = "Filtro";
+            this.label1.Text = "label1";
             // 
             // frmArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(971, 309);
+            this.ClientSize = new System.Drawing.Size(1072, 309);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pbxArticulo);
             this.Controls.Add(this.lblArticulos);
