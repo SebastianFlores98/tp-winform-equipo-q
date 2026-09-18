@@ -16,5 +16,11 @@ namespace TPWinForm_equipo_q.Categoria
         {
             InitializeComponent();
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmAgregarCategoria agregarCategoria = new frmAgregarCategoria();
+            agregarCategoria.ShowDialog();
+        }
     }
 }

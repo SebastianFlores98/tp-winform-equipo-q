@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
+using Negocio;
 
 namespace TPWinForm_equipo_q.Articulo
 {
@@ -39,6 +41,19 @@ namespace TPWinForm_equipo_q.Articulo
 
         private void frmABM_Load(object sender, EventArgs e)
         {
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            try
+            {
+                cbxMarca.DataSource = articuloNegocio.Listar();
+                cbxCategoria.DataSource = articuloNegocio.Listar();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+
+
             if (articulo != null)
             {
                 txtId.Text = articulo.Id.ToString();
@@ -87,5 +102,30 @@ namespace TPWinForm_equipo_q.Articulo
         {
             this.Close();
         }
+
+        private void btnGrabar_Click(object sender, EventArgs e)
+        {
+            Dominio.Articulo arti = new Dominio.Articulo(); 
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            try
+            {
+                arti.CodigoArticulo = txtCodigo.Text;
+                arti.Nombre = txtNombre.Text;
+                arti.Descripcion = txtDescripcion.Text;
+                //arti.Marca = (Marca)cbxMarca.SelectedItem;//corregir
+                //arti.Categoria = (Categoria)cbxCategoria.SelectedItem;//corregir
+                arti.Precio = decimal.Parse(txtPrecio.Text);
+
+                negocio.agregar(arti);
+                MessageBox.Show("Agregado exitosamente");
+                Close();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
     }
 }
