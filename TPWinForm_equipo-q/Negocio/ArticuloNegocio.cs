@@ -23,7 +23,9 @@ namespace Negocio
                         "ART.Codigo, " +
                         "ART.Nombre, " +
                         "ART.Descripcion, " +
+                        "MAR.Id AS IdMarca, " +
                         "MAR.Descripcion AS DescripcionMarca, " +
+                        "CAT.Id AS IdCategoria, " +
                         "CAT.Descripcion AS DescripcionCategoria, " +
                         "ART.Precio, " + 
                         "IMG.ImagenUrl " +
@@ -42,8 +44,10 @@ namespace Negocio
                     aux.Nombre = (string)datosArticulo.Lector["Nombre"];
                     aux.Descripcion = (string)datosArticulo.Lector["Descripcion"];
                     aux.Marca = new Marca();
+                    aux.Marca.Id = (int)datosArticulo.Lector["IdMarca"];
                     aux.Marca.Descripcion = (string)datosArticulo.Lector["DescripcionMarca"];
                     aux.Categoria = new Categoria();
+                    aux.Categoria.Id = (int)datosArticulo.Lector["IdCategoria"];
                     aux.Categoria.Descripcion = (string)datosArticulo.Lector["DescripcionCategoria"];
                     aux.Precio = (decimal)datosArticulo.Lector["Precio"];
                     aux.UrlImagen = (string)datosArticulo.Lector["ImagenUrl"];
@@ -63,6 +67,59 @@ namespace Negocio
             }
         }
 
+        /*Agregar BD*/
+        public void agregar(Articulo arti)
+        {
+            ConexionDatos datos = new ConexionDatos();
+
+            try
+            {
+                datos.setearConsulta("insert into ARTICULOS (Codigo, Nombre, Descripcion)values('" + arti.CodigoArticulo + "', '" + arti.Nombre+ "', '"+ arti.Descripcion+"')"); 
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        /*Modificar BD*/
+        public void modificar(Articulo art)
+        {
+            ConexionDatos datosArticulo = new ConexionDatos();
+
+            try
+            {
+                datosArticulo.setearConsulta("UPDATE ARTICULOS SET Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, IdMarca = @idMarca, IdCategoria = @idCategoria, Precio = @precio WHERE Id = @id");
+
+                datosArticulo.agregarParametro("@id", art.Id);
+                datosArticulo.agregarParametro("@codigo", art.CodigoArticulo);
+                datosArticulo.agregarParametro("@nombre", art.Nombre);
+                datosArticulo.agregarParametro("@descripcion", art.Descripcion);
+                datosArticulo.agregarParametro("@idMarca", art.Marca.Id);       
+                datosArticulo.agregarParametro("@idCategoria", art.Categoria.Id); 
+                datosArticulo.agregarParametro("@precio", art.Precio);
+                //datosArticulo.agregarParametro("@img", art.UrlImagen);
+
+                datosArticulo.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datosArticulo.cerrarConexion();
+            }
+        }
+
+        /*Eliminar BD*/
         public void Eliminar(int id)
         {
             ConexionDatos datos = new ConexionDatos();
@@ -83,26 +140,5 @@ namespace Negocio
             }
         }
 
-        public void agregar(Articulo arti)
-        {
-            ConexionDatos datos = new ConexionDatos();
-
-            try
-            {
-                datos.setearConsulta("insert into ARTICULOS (Codigo, Nombre, Descripcion)values('" + arti.CodigoArticulo + "', '" + arti.Nombre+ "', '"+ arti.Descripcion+"')"); 
-                datos.ejecutarAccion();
-
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-        }
-  
     }
 }

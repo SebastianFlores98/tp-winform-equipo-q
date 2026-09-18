@@ -47,7 +47,7 @@ namespace TPWinForm_equipo_q.Articulo
             {
                pbxArticulo.Load(imagen);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 pbxArticulo.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS5DKzdprfHmIYRpEfNNPVRYPDfh0Bvjjw_Ud_yRIwSw&s=10");
             }
@@ -63,6 +63,19 @@ namespace TPWinForm_equipo_q.Articulo
             
         }
 
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmABM frmAgregarArticulo = new frmABM();
+            frmAgregarArticulo.ShowDialog();
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Dominio.Articulo seleccionado = (Dominio.Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            frmABM frmModificarArticulo = new frmABM(seleccionado);
+            frmModificarArticulo.ShowDialog();
+            Cargar();
+        }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -79,7 +92,7 @@ namespace TPWinForm_equipo_q.Articulo
                 ArticuloNegocio negocio = new ArticuloNegocio();
                 negocio.Eliminar(seleccionado.Id);
                 MessageBox.Show("Artículo eliminado con éxito.");
-                Cargar(); 
+                Cargar();
             }
         }
 
@@ -89,21 +102,6 @@ namespace TPWinForm_equipo_q.Articulo
             frmABM frmDetalleArticulo = new frmABM(seleccionado, true);
             frmDetalleArticulo.ShowDialog();
         }
-
-        private void btnModificar_Click(object sender, EventArgs e)
-        {
-            Dominio.Articulo seleccionado = (Dominio.Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            frmABM frmModificarArticulo = new frmABM(seleccionado);
-            frmModificarArticulo.ShowDialog();
-        }
-
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            frmABM frmModificarArticulo = new frmABM();
-            frmModificarArticulo.ShowDialog();
-        }
-
-       
 
         private void txtFiltro_TextChanged(object sender, EventArgs e)
         {

@@ -21,38 +21,43 @@ namespace TPWinForm_equipo_q.Articulo
         public frmABM()
         {
             InitializeComponent();
-            Text = "Agregar Articulo";
+            Text = "Agregar Artículo";
         }
 
         public frmABM(Dominio.Articulo aux)
         {
             InitializeComponent();
             articulo = aux;
-            Text = "Modificar Articulo";
+            Text = "Modificar Artículo";
         }
 
         public frmABM(Dominio.Articulo aux, bool detalle)
         {
             InitializeComponent();
             articulo = aux;
-            Text = "Detalle del Articulo";
+            Text = "Detalle del Artículo";
             this.detalle = detalle;
         }
 
         private void frmABM_Load(object sender, EventArgs e)
         {
-            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
+            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+
             try
             {
-                cbxMarca.DataSource = articuloNegocio.Listar();
-                cbxCategoria.DataSource = articuloNegocio.Listar();
+                cboMarca.DataSource = marcaNegocio.Listar(); 
+                cboMarca.ValueMember = "Id";
+                cboMarca.DisplayMember = "Descripcion";
+
+                cboCategoria.DataSource = categoriaNegocio.listar();
+                cboCategoria.ValueMember = "Id";
+                cboCategoria.DisplayMember = "Descripcion";
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.ToString());
             }
-
 
             if (articulo != null)
             {
@@ -62,17 +67,15 @@ namespace TPWinForm_equipo_q.Articulo
                 txtDescripcion.Text = articulo.Descripcion;
                 txtPrecio.Text = articulo.Precio.ToString();
 
-                cbxMarca.Items.Add(articulo.Marca);
-                cbxMarca.SelectedIndex = 0;
-
-                cbxCategoria.Items.Add(articulo.Categoria);
-                cbxCategoria.SelectedIndex = 0;
+                cboMarca.SelectedValue = articulo.Marca.Id;
+                cboCategoria.SelectedValue = articulo.Categoria.Id;
 
                 CargarImagen(articulo.UrlImagen);
             }
 
             activarDesactivarGbx();
         }
+
 
         private void activarDesactivarGbx()
         {
@@ -81,8 +84,8 @@ namespace TPWinForm_equipo_q.Articulo
             txtNombre.Enabled = !detalle;
             txtDescripcion.Enabled = !detalle;
             txtPrecio.Enabled = !detalle;
-            cbxMarca.Enabled = !detalle;
-            cbxCategoria.Enabled = !detalle;
+            cboMarca.Enabled = !detalle;
+            cboCategoria.Enabled = !detalle;
             btnGrabar.Visible = !detalle;
         }
 
@@ -98,33 +101,44 @@ namespace TPWinForm_equipo_q.Articulo
             }
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void btnGrabar_Click(object sender, EventArgs e)
         {
-            Dominio.Articulo arti = new Dominio.Articulo(); 
             ArticuloNegocio negocio = new ArticuloNegocio();
             try
             {
-                arti.CodigoArticulo = txtCodigo.Text;
-                arti.Nombre = txtNombre.Text;
-                arti.Descripcion = txtDescripcion.Text;
-                //arti.Marca = (Marca)cbxMarca.SelectedItem;//corregir
-                //arti.Categoria = (Categoria)cbxCategoria.SelectedItem;//corregir
-                arti.Precio = decimal.Parse(txtPrecio.Text);
+                if (articulo == null)
+                {
+                    articulo = new Dominio.Articulo();
+                }
 
-                negocio.agregar(arti);
-                MessageBox.Show("Agregado exitosamente");
+                articulo.CodigoArticulo = txtCodigo.Text;
+                articulo.Nombre = txtNombre.Text;
+                articulo.Descripcion = txtDescripcion.Text;
+                articulo.Marca = (Dominio.Marca)cboMarca.SelectedItem;
+                articulo.Categoria = (Dominio.Categoria)cboCategoria.SelectedItem;
+                articulo.Precio = decimal.Parse(txtPrecio.Text);
+
+                if(articulo.Id != 0)
+                {
+                    negocio.modificar(articulo);
+                    MessageBox.Show("Modificado exitosamente");
+
+                } else
+                {
+                    negocio.agregar(articulo);
+                    MessageBox.Show("Agregado exitosamente");
+                }
                 Close();
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
     }
