@@ -117,7 +117,7 @@
             this.txtId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(223, 22);
-            this.txtId.TabIndex = 7;
+            this.txtId.TabIndex = 0;
             // 
             // txtCodigo
             // 
@@ -125,7 +125,7 @@
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(223, 22);
-            this.txtCodigo.TabIndex = 8;
+            this.txtCodigo.TabIndex = 1;
             // 
             // txtNombre
             // 
@@ -133,7 +133,7 @@
             this.txtNombre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(223, 22);
-            this.txtNombre.TabIndex = 9;
+            this.txtNombre.TabIndex = 2;
             // 
             // txtDescripcion
             // 
@@ -141,7 +141,7 @@
             this.txtDescripcion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(223, 22);
-            this.txtDescripcion.TabIndex = 10;
+            this.txtDescripcion.TabIndex = 3;
             // 
             // txtPrecio
             // 
@@ -149,7 +149,7 @@
             this.txtPrecio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(223, 22);
-            this.txtPrecio.TabIndex = 13;
+            this.txtPrecio.TabIndex = 6;
             // 
             // pbxImagenUrl
             // 
@@ -158,6 +158,7 @@
             this.pbxImagenUrl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbxImagenUrl.Name = "pbxImagenUrl";
             this.pbxImagenUrl.Size = new System.Drawing.Size(293, 257);
+            this.pbxImagenUrl.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxImagenUrl.TabIndex = 14;
             this.pbxImagenUrl.TabStop = false;
             // 
@@ -169,7 +170,7 @@
             this.cboMarca.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboMarca.Name = "cboMarca";
             this.cboMarca.Size = new System.Drawing.Size(223, 24);
-            this.cboMarca.TabIndex = 15;
+            this.cboMarca.TabIndex = 4;
             // 
             // cboCategoria
             // 
@@ -179,7 +180,7 @@
             this.cboCategoria.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(223, 24);
-            this.cboCategoria.TabIndex = 16;
+            this.cboCategoria.TabIndex = 5;
             // 
             // btnGrabar
             // 
@@ -188,7 +189,7 @@
             this.btnGrabar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnGrabar.Name = "btnGrabar";
             this.btnGrabar.Size = new System.Drawing.Size(108, 39);
-            this.btnGrabar.TabIndex = 17;
+            this.btnGrabar.TabIndex = 7;
             this.btnGrabar.Text = "Grabar";
             this.btnGrabar.UseVisualStyleBackColor = true;
             this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
@@ -200,7 +201,7 @@
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(113, 39);
-            this.btnCancelar.TabIndex = 18;
+            this.btnCancelar.TabIndex = 8;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);

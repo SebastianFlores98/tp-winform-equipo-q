@@ -28,38 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.LabelMain = new System.Windows.Forms.Label();
+            this.lblGestionArticulos = new System.Windows.Forms.Label();
             this.BtnMainArticulos = new System.Windows.Forms.Button();
             this.BtnMainMarcas = new System.Windows.Forms.Button();
             this.BtnMainCategorias = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // LabelMain
+            // lblGestionArticulos
             // 
-            this.LabelMain.AutoSize = true;
-            this.LabelMain.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelMain.Location = new System.Drawing.Point(387, 121);
-            this.LabelMain.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LabelMain.Name = "LabelMain";
-            this.LabelMain.Size = new System.Drawing.Size(259, 31);
-            this.LabelMain.TabIndex = 0;
-            this.LabelMain.Text = "Gestion de Articulos";
+            this.lblGestionArticulos.AutoSize = true;
+            this.lblGestionArticulos.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGestionArticulos.Location = new System.Drawing.Point(387, 121);
+            this.lblGestionArticulos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblGestionArticulos.Name = "lblGestionArticulos";
+            this.lblGestionArticulos.Size = new System.Drawing.Size(259, 31);
+            this.lblGestionArticulos.TabIndex = 0;
+            this.lblGestionArticulos.Text = "Gestión de Artículos";
             // 
             // BtnMainArticulos
             // 
             this.BtnMainArticulos.Location = new System.Drawing.Point(472, 249);
-            this.BtnMainArticulos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnMainArticulos.Margin = new System.Windows.Forms.Padding(4);
             this.BtnMainArticulos.Name = "BtnMainArticulos";
             this.BtnMainArticulos.Size = new System.Drawing.Size(100, 28);
             this.BtnMainArticulos.TabIndex = 1;
-            this.BtnMainArticulos.Text = "Articulos";
+            this.BtnMainArticulos.Text = "Artículos";
             this.BtnMainArticulos.UseVisualStyleBackColor = true;
             this.BtnMainArticulos.Click += new System.EventHandler(this.BtnMainArticulos_Click);
             // 
             // BtnMainMarcas
             // 
             this.BtnMainMarcas.Location = new System.Drawing.Point(472, 304);
-            this.BtnMainMarcas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnMainMarcas.Margin = new System.Windows.Forms.Padding(4);
             this.BtnMainMarcas.Name = "BtnMainMarcas";
             this.BtnMainMarcas.Size = new System.Drawing.Size(100, 28);
             this.BtnMainMarcas.TabIndex = 2;
@@ -70,11 +70,11 @@
             // BtnMainCategorias
             // 
             this.BtnMainCategorias.Location = new System.Drawing.Point(472, 356);
-            this.BtnMainCategorias.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnMainCategorias.Margin = new System.Windows.Forms.Padding(4);
             this.BtnMainCategorias.Name = "BtnMainCategorias";
             this.BtnMainCategorias.Size = new System.Drawing.Size(100, 28);
             this.BtnMainCategorias.TabIndex = 3;
-            this.BtnMainCategorias.Text = "Categorias";
+            this.BtnMainCategorias.Text = "Categorías";
             this.BtnMainCategorias.UseVisualStyleBackColor = true;
             this.BtnMainCategorias.Click += new System.EventHandler(this.BtnMainCategorias_Click);
             // 
@@ -86,11 +86,11 @@
             this.Controls.Add(this.BtnMainCategorias);
             this.Controls.Add(this.BtnMainMarcas);
             this.Controls.Add(this.BtnMainArticulos);
-            this.Controls.Add(this.LabelMain);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Controls.Add(this.lblGestionArticulos);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Gestión de artículos";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -98,7 +98,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label LabelMain;
+        private System.Windows.Forms.Label lblGestionArticulos;
         private System.Windows.Forms.Button BtnMainArticulos;
         private System.Windows.Forms.Button BtnMainMarcas;
         private System.Windows.Forms.Button BtnMainCategorias;

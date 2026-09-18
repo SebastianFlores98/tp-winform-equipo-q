@@ -37,7 +37,6 @@ namespace TPWinForm_equipo_q
         {
             frmArticulos frmArticulosMenu = new frmArticulos();
             frmArticulosMenu.ShowDialog();
-
         }
     }
 }
