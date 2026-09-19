@@ -31,8 +31,8 @@ namespace Negocio
                         "IMG.ImagenUrl " +
                     "FROM ARTICULOS ART " +
                     "INNER JOIN MARCAS MAR ON MAR.Id = ART.IdMarca " +
-                    "INNER JOIN CATEGORIAS CAT ON CAT.Id = ART.IdCategoria " +
-                    "INNER JOIN IMAGENES IMG ON IMG.IdArticulo = ART.Id"
+                    "LEFT JOIN CATEGORIAS CAT ON CAT.Id = ART.IdCategoria " +
+                    "LEFT JOIN IMAGENES IMG ON IMG.IdArticulo = ART.Id"
                 );
                 datosArticulo.ejecutarLectura();
 
@@ -46,11 +46,28 @@ namespace Negocio
                     aux.Marca = new Marca();
                     aux.Marca.Id = (int)datosArticulo.Lector["IdMarca"];
                     aux.Marca.Descripcion = (string)datosArticulo.Lector["DescripcionMarca"];
+
+                    // Contemplo NULL de categoria porque hay un artículo que posee un ID de categoria que no existe
                     aux.Categoria = new Categoria();
-                    aux.Categoria.Id = (int)datosArticulo.Lector["IdCategoria"];
-                    aux.Categoria.Descripcion = (string)datosArticulo.Lector["DescripcionCategoria"];
+                    if (!(datosArticulo.Lector["IdCategoria"] is DBNull))
+                    {
+                        aux.Categoria.Id = (int)datosArticulo.Lector["IdCategoria"];
+                        aux.Categoria.Descripcion = (string)datosArticulo.Lector["DescripcionCategoria"];
+                    }
+                    else
+                    {
+                        aux.Categoria.Id = 0; 
+                        aux.Categoria.Descripcion = "Sin Categoría"; 
+                    
+                    }
+
                     aux.Precio = (decimal)datosArticulo.Lector["Precio"];
-                    aux.UrlImagen = (string)datosArticulo.Lector["ImagenUrl"];
+
+                    // Contemplo NULL de imágenes
+                    if(!(datosArticulo.Lector["ImagenUrl"] is DBNull))
+                    {
+                        aux.UrlImagen = (string)datosArticulo.Lector["ImagenUrl"];
+                    }
 
                     lista.Add(aux);
                 }

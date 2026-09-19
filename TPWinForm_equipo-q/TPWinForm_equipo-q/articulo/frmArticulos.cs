@@ -29,10 +29,20 @@ namespace TPWinForm_equipo_q.Articulo
         private void Cargar()
         {
             ArticuloNegocio listado = new ArticuloNegocio();
-            listaArticulo = listado.Listar();
-            dgvArticulos.DataSource = listaArticulo;
-            ocultarColumnas();
-            cargarImagen(listaArticulo[0].UrlImagen);
+
+            try
+            {
+                listaArticulo = listado.Listar();
+                dgvArticulos.DataSource = listaArticulo;
+                ocultarColumnas();
+                cargarImagen(listaArticulo[0].UrlImagen);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+            
         }
 
         private void ocultarColumnas()
@@ -59,8 +69,7 @@ namespace TPWinForm_equipo_q.Articulo
             {
                 Dominio.Articulo seleccionado = (Dominio.Articulo)dgvArticulos.CurrentRow.DataBoundItem;
                 cargarImagen(seleccionado.UrlImagen);
-            }
-            
+            }        
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
