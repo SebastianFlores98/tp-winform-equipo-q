@@ -79,8 +79,24 @@ namespace TPWinForm_equipo_q.Articulo
             Cargar();
         }
 
+        // Valida que haya un Id seleccionado en la grilla
+        private bool validarIdSeleccionado()
+        {
+            if (dgvArticulos.CurrentRow == null || dgvArticulos.CurrentRow.DataBoundItem == null)
+            {
+                MessageBox.Show("Por favor, seleccione un artículo de la lista.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false; 
+            }
+            return true; 
+        }
+
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            if (!validarIdSeleccionado())
+            {
+                return;
+            }
+
             Dominio.Articulo seleccionado = (Dominio.Articulo)dgvArticulos.CurrentRow.DataBoundItem;
             frmABM frmModificarArticulo = new frmABM(seleccionado);
             frmModificarArticulo.ShowDialog();
@@ -89,6 +105,11 @@ namespace TPWinForm_equipo_q.Articulo
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            if (!validarIdSeleccionado())
+            {
+                return;
+            }
+
             Dominio.Articulo seleccionado = (Dominio.Articulo)dgvArticulos.CurrentRow.DataBoundItem;
 
             DialogResult respuesta = MessageBox.Show(
@@ -108,6 +129,11 @@ namespace TPWinForm_equipo_q.Articulo
 
         private void btnDetalle_Click(object sender, EventArgs e)
         {
+            if (!validarIdSeleccionado())
+            {
+                return;
+            }
+
             Dominio.Articulo seleccionado = (Dominio.Articulo)dgvArticulos.CurrentRow.DataBoundItem;
             frmABM frmDetalleArticulo = new frmABM(seleccionado, true);
             frmDetalleArticulo.ShowDialog();
@@ -135,11 +161,6 @@ namespace TPWinForm_equipo_q.Articulo
             dgvArticulos.DataSource = null;
             dgvArticulos.DataSource = listaFiltrada;
             ocultarColumnas();
-        }
-
-        private void dgvArticulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }
