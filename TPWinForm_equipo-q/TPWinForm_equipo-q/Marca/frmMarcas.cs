@@ -38,5 +38,31 @@ namespace TPWinForm_equipo_q.Marca
             Cargar();
         }
 
+        private void btnEliminarMarca_Click(object sender, EventArgs e)
+        {
+            Dominio.Marca seleccionado = (Dominio.Marca)dgvMarcas.CurrentRow.DataBoundItem;
+
+            DialogResult respuesta = MessageBox.Show(
+                "¿Seguro que querés eliminar esta marca?",
+                "Eliminar Marca",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (respuesta == DialogResult.Yes)
+            {
+                MarcaNegocio negocio = new MarcaNegocio();
+                // 1. Ponemos el bloque "try" para intentar ejecutar el código
+                try
+                {
+                    negocio.Eliminar(seleccionado.Id);
+                    MessageBox.Show("Marca eliminada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Cargar();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
     }
 }
