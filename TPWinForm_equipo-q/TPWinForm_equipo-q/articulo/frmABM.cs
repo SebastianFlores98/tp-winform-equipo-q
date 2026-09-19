@@ -18,6 +18,37 @@ namespace TPWinForm_equipo_q.Articulo
         private Dominio.Articulo articulo = null;
         private bool detalle = false;
 
+        private List<string> listaImagenes;
+        private int imagenActual = 0; 
+
+        // Muestra las imagenes 
+        private void mostrarImagenActual()
+        {
+            // Si no hay imágenes en la lista deshabilita los botones y carga una imagen por defecto.
+            if (listaImagenes == null || listaImagenes.Count == 0)
+            {
+                pbxCarrusel.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS5DKzdprfHmIYRpEfNNPVRYPDfh0Bvjjw_Ud_yRIwSw&s=10");
+                txtUrlImagen.Text = "Sin Imagen";
+                btnAnterior.Enabled = false;
+                btnSiguiente.Enabled = false;
+                return;
+            }
+
+            try
+            {
+                txtUrlImagen.Text = listaImagenes[imagenActual];
+                pbxCarrusel.Load(listaImagenes[imagenActual]);
+            }
+            catch (Exception)
+            {
+                pbxCarrusel.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS5DKzdprfHmIYRpEfNNPVRYPDfh0Bvjjw_Ud_yRIwSw&s=10");
+            }
+
+            // Habilita o deshabilita las flechas para ver las imágenes
+            btnAnterior.Enabled = (imagenActual > 0);
+            btnSiguiente.Enabled = (imagenActual < listaImagenes.Count - 1);
+        }
+
         public frmABM()
         {
             InitializeComponent();
@@ -53,6 +84,9 @@ namespace TPWinForm_equipo_q.Articulo
                 cboCategoria.DataSource = categoriaNegocio.listar();
                 cboCategoria.ValueMember = "Id";
                 cboCategoria.DisplayMember = "Descripcion";
+
+                cboMarca.SelectedIndex = -1;
+                cboCategoria.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -70,12 +104,18 @@ namespace TPWinForm_equipo_q.Articulo
                 cboMarca.SelectedValue = articulo.Marca.Id;
                 cboCategoria.SelectedValue = articulo.Categoria.Id;
 
-                CargarImagen(articulo.UrlImagen);
+                ImagenNegocio imagenNegocio = new ImagenNegocio();
+                listaImagenes = imagenNegocio.ListarImagenes(articulo.Id);
+
+                mostrarImagenActual();
+            } else
+            {
+                btnAnterior.Enabled = false;
+                btnSiguiente.Enabled = false;
             }
 
             activarDesactivarGbx();
         }
-
 
         private void activarDesactivarGbx()
         {
@@ -86,27 +126,57 @@ namespace TPWinForm_equipo_q.Articulo
             txtPrecio.Enabled = !detalle;
             cboMarca.Enabled = !detalle;
             cboCategoria.Enabled = !detalle;
+            txtUrlImagen.Enabled = !detalle;
             btnGrabar.Visible = !detalle;
         }
 
-        private void CargarImagen(string imagen)
+        private void cargarImagen(string imagen)
         {
             try
             {
-                pbxImagenUrl.Load(imagen);
+                pbxCarrusel.Load(imagen);
             }
             catch (Exception)
             {
-                pbxImagenUrl.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS5DKzdprfHmIYRpEfNNPVRYPDfh0Bvjjw_Ud_yRIwSw&s=10");
+                pbxCarrusel.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS5DKzdprfHmIYRpEfNNPVRYPDfh0Bvjjw_Ud_yRIwSw&s=10");
             }
+        }
+
+        private bool ValidarCboMarca()
+        {
+            if (cboMarca.SelectedIndex < 0)
+            {
+                MessageBox.Show("Debe ingresar una marca");
+                return true;
+            }
+            return false;
+        }
+
+        private bool ValidarCboCategoria()
+        {
+            if (cboCategoria.SelectedIndex < 0)
+            {
+                MessageBox.Show("Debe ingresar una categoria");
+                return true;
+            }
+            return false;
         }
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
-            Dominio.Articulo arti = new Dominio.Articulo();//revisar
             ArticuloNegocio negocio = new ArticuloNegocio();
             try
             {
+                if (ValidarCboMarca())
+                {
+                    return;
+                }
+
+                if (ValidarCboCategoria())
+                {
+                    return;
+                }
+
                 if (articulo == null)
                 {
                     articulo = new Dominio.Articulo();
@@ -118,11 +188,7 @@ namespace TPWinForm_equipo_q.Articulo
                 articulo.Marca = (Dominio.Marca)cboMarca.SelectedItem;
                 articulo.Categoria = (Dominio.Categoria)cboCategoria.SelectedItem;
                 articulo.Precio = decimal.Parse(txtPrecio.Text);
-
-                //capturo el articulo de la grilla
-                arti.Categoria = (Dominio.Categoria)cboCategoria.SelectedItem;
-                arti.Marca = (Dominio.Marca)cboMarca.SelectedItem;
-
+                articulo.UrlImagen = txtUrlImagen.Text;
 
                 if(articulo.Id != 0)
                 {
@@ -147,5 +213,27 @@ namespace TPWinForm_equipo_q.Articulo
             this.Close();
         }
 
+        private void txtUrlImagen_Leave(object sender, EventArgs e)
+        {
+            cargarImagen(txtUrlImagen.Text);
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            if (imagenActual > 0)
+            {
+                imagenActual--;
+                mostrarImagenActual();
+            }
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            if (imagenActual < listaImagenes.Count - 1)
+            {
+                imagenActual++;
+                mostrarImagenActual();
+            }
+        }
     }
 }

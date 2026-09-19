@@ -27,12 +27,16 @@ namespace Negocio
                         "MAR.Descripcion AS DescripcionMarca, " +
                         "CAT.Id AS IdCategoria, " +
                         "CAT.Descripcion AS DescripcionCategoria, " +
-                        "ART.Precio, " + 
+                        "ART.Precio, " +
                         "IMG.ImagenUrl " +
                     "FROM ARTICULOS ART " +
                     "INNER JOIN MARCAS MAR ON MAR.Id = ART.IdMarca " +
                     "LEFT JOIN CATEGORIAS CAT ON CAT.Id = ART.IdCategoria " +
-                    "LEFT JOIN IMAGENES IMG ON IMG.IdArticulo = ART.Id"
+                    "LEFT JOIN (" +
+                        "SELECT IdArticulo, MIN(ImagenUrl) AS ImagenUrl " +
+                        "FROM IMAGENES " +
+                        "GROUP BY IdArticulo" +
+                    ") IMG ON IMG.IdArticulo = ART.Id"
                 );
                 datosArticulo.ejecutarLectura();
 
@@ -160,6 +164,5 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
-
     }
 }
