@@ -22,5 +22,12 @@ namespace Dominio
         public Categoria Categoria { get; set; }
         public decimal Precio { get; set; }
         public string UrlImagen { get; set; }
+        
+        public List<string> Imagenes { get; set; }
+  
+        public Articulo()
+        {
+            Imagenes = new List<string>();
+        }
     }
 }
