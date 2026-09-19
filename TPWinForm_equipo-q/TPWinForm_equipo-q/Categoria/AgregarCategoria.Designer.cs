@@ -30,7 +30,7 @@
         {
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.txtAgregarCategoria = new System.Windows.Forms.TextBox();
-            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelarCategoria = new System.Windows.Forms.Button();
             this.lblListaCategorias = new System.Windows.Forms.Label();
             this.dgvCategoria = new System.Windows.Forms.DataGridView();
@@ -54,15 +54,15 @@
             this.txtAgregarCategoria.Size = new System.Drawing.Size(228, 20);
             this.txtAgregarCategoria.TabIndex = 1;
             // 
-            // btnAgregar
+            // btnAceptar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(63, 243);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 2;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.btnAceptar.Location = new System.Drawing.Point(63, 243);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnAceptar.TabIndex = 2;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnCancelarCategoria
             // 
@@ -102,7 +102,7 @@
             this.Controls.Add(this.dgvCategoria);
             this.Controls.Add(this.lblListaCategorias);
             this.Controls.Add(this.btnCancelarCategoria);
-            this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.txtAgregarCategoria);
             this.Controls.Add(this.lblDescripcion);
             this.Name = "frmAgregarCategoria";
@@ -119,7 +119,7 @@
 
         private System.Windows.Forms.Label lblDescripcion;
         private System.Windows.Forms.TextBox txtAgregarCategoria;
-        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelarCategoria;
         private System.Windows.Forms.Label lblListaCategorias;
         private System.Windows.Forms.DataGridView dgvCategoria;

@@ -14,9 +14,17 @@ namespace TPWinForm_equipo_q.Categoria
 {
     public partial class frmAgregarCategoria : Form
     {
+        private Dominio.Categoria categoria = null;
         public frmAgregarCategoria()
         {
             InitializeComponent();
+        }
+
+        public frmAgregarCategoria(Dominio.Categoria categoria)
+        {
+            InitializeComponent();
+            this.categoria = categoria;
+            Text = "Modificar Categoria";
         }
 
         private void btnCancelarCategoria_Click(object sender, EventArgs e)
@@ -28,25 +36,43 @@ namespace TPWinForm_equipo_q.Categoria
         {
             CategoriaNegocio negocio = new CategoriaNegocio();
             dgvCategoria.DataSource = negocio.listar();
+
+            if (categoria != null)
+            {
+                txtAgregarCategoria.Text = categoria.Descripcion.ToString();
+            }
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Dominio.Categoria nueva = new Dominio.Categoria();
-            CategoriaNegocio negocio = new CategoriaNegocio();
-
-            try
             {
-                nueva.Descripcion = txtAgregarCategoria.Text;
+               CategoriaNegocio negocio = new CategoriaNegocio();
 
-                negocio.agregar(nueva);
-                MessageBox.Show("Se agrego correctamente");
-                Close();
-            }
-            catch (Exception ex)
-            {
+                try
+                {
+                    if (categoria == null)
+                        categoria = new Dominio.Categoria();
 
-                MessageBox.Show(ex.ToString());
+                    categoria.Descripcion = txtAgregarCategoria.Text;
+
+                    if(categoria.Id != 0)
+                    {
+                        negocio.modificar(categoria);
+                        MessageBox.Show("Modificado exitosamente");
+                    }
+                    else
+                    {
+                        negocio.agregar(categoria);
+                        MessageBox.Show("Se agrego correctamente");
+                    }
+                    
+                    Close();
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.ToString());
+                }
             }
         }
     }

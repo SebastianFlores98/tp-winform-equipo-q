@@ -24,12 +24,17 @@ namespace TPWinForm_equipo_q.Categoria
         {
             frmAgregarCategoria agregarCategoria = new frmAgregarCategoria();
             agregarCategoria.ShowDialog();
+            Cargar();
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            frmModificarCategoria modificarCategoria = new frmModificarCategoria();
+            Dominio.Categoria seleccionada;
+            seleccionada = (Dominio.Categoria)dgvCategoria.CurrentRow.DataBoundItem;
+
+            frmAgregarCategoria modificarCategoria = new frmAgregarCategoria(seleccionada);
             modificarCategoria.ShowDialog();
+            Cargar();
         }
 
         private void frmCategorias_Load(object sender, EventArgs e)
@@ -40,8 +45,17 @@ namespace TPWinForm_equipo_q.Categoria
         private void Cargar()
         {
             CategoriaNegocio listado = new CategoriaNegocio();
-            listaCategoria = listado.listar();
-            dgvCategoria.DataSource = listaCategoria;
+            try
+            {
+                listaCategoria = listado.listar();
+                dgvCategoria.DataSource = listaCategoria;
+                dgvCategoria.Columns["Id"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void dgvCategoria_SelectionChanged(object sender, EventArgs e)
@@ -50,6 +64,11 @@ namespace TPWinForm_equipo_q.Categoria
             {
                 Dominio.Categoria seleccionado = (Dominio.Categoria)dgvCategoria.CurrentRow.DataBoundItem;
             }
+        }
+
+        private void textBoxBuscador_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }    
 }

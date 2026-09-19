@@ -59,5 +59,27 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void modificar(Categoria categ)
+        {
+            ConexionDatos datos = new ConexionDatos();
+            try
+            {
+                datos.setearConsulta("update CATEGORIAS set Descripcion = @descripcion where id = @id");
+                datos.agregarParametro("@descripcion", categ.Descripcion);
+                datos.agregarParametro("@id", categ.Id);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }
