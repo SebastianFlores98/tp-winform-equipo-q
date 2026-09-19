@@ -34,8 +34,8 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.textBoxBuscador = new System.Windows.Forms.TextBox();
-            this.dgvArticulos = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
+            this.dgvCategoria = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCategoria)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCategorias
@@ -74,6 +74,7 @@
             this.btnModificar.TabIndex = 17;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnAgregar
             // 
@@ -92,16 +93,19 @@
             this.textBoxBuscador.Size = new System.Drawing.Size(100, 20);
             this.textBoxBuscador.TabIndex = 15;
             // 
-            // dgvArticulos
+            // dgvCategoria
             // 
-            this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvArticulos.Location = new System.Drawing.Point(159, 157);
-            this.dgvArticulos.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvArticulos.Name = "dgvArticulos";
-            this.dgvArticulos.RowHeadersWidth = 51;
-            this.dgvArticulos.RowTemplate.Height = 24;
-            this.dgvArticulos.Size = new System.Drawing.Size(475, 208);
-            this.dgvArticulos.TabIndex = 14;
+            this.dgvCategoria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCategoria.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvCategoria.Location = new System.Drawing.Point(159, 157);
+            this.dgvCategoria.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvCategoria.MultiSelect = false;
+            this.dgvCategoria.Name = "dgvCategoria";
+            this.dgvCategoria.RowHeadersWidth = 51;
+            this.dgvCategoria.RowTemplate.Height = 24;
+            this.dgvCategoria.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCategoria.Size = new System.Drawing.Size(475, 208);
+            this.dgvCategoria.TabIndex = 14;
             // 
             // frmCategorias
             // 
@@ -114,10 +118,12 @@
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.textBoxBuscador);
-            this.Controls.Add(this.dgvArticulos);
+            this.Controls.Add(this.dgvCategoria);
             this.Name = "frmCategorias";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCategorias";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
+            this.Load += new System.EventHandler(this.frmCategorias_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCategoria)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,6 +137,6 @@
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.TextBox textBoxBuscador;
-        private System.Windows.Forms.DataGridView dgvArticulos;
+        private System.Windows.Forms.DataGridView dgvCategoria;
     }
 }

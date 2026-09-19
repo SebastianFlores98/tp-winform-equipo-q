@@ -103,6 +103,7 @@ namespace TPWinForm_equipo_q.Articulo
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
+            Dominio.Articulo arti = new Dominio.Articulo();//revisar
             ArticuloNegocio negocio = new ArticuloNegocio();
             try
             {
@@ -117,6 +118,11 @@ namespace TPWinForm_equipo_q.Articulo
                 articulo.Marca = (Dominio.Marca)cboMarca.SelectedItem;
                 articulo.Categoria = (Dominio.Categoria)cboCategoria.SelectedItem;
                 articulo.Precio = decimal.Parse(txtPrecio.Text);
+
+                //capturo el articulo de la grilla
+                arti.Categoria = (Dominio.Categoria)cboCategoria.SelectedItem;
+                arti.Marca = (Dominio.Marca)cboMarca.SelectedItem;
+
 
                 if(articulo.Id != 0)
                 {

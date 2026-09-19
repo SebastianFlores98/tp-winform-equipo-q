@@ -67,6 +67,7 @@ namespace TPWinForm_equipo_q.Articulo
         {
             frmABM frmAgregarArticulo = new frmABM();
             frmAgregarArticulo.ShowDialog();
+            Cargar();
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -125,6 +126,11 @@ namespace TPWinForm_equipo_q.Articulo
             dgvArticulos.DataSource = null;
             dgvArticulos.DataSource = listaFiltrada;
             ocultarColumnas();
+        }
+
+        private void dgvArticulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

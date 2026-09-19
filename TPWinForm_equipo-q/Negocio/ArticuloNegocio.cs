@@ -74,7 +74,11 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("insert into ARTICULOS (Codigo, Nombre, Descripcion)values('" + arti.CodigoArticulo + "', '" + arti.Nombre+ "', '"+ arti.Descripcion+"')"); 
+                datos.setearConsulta("insert into ARTICULOS (Codigo, Nombre, Descripcion, idMArca, idCategoria, Precio)values('" + arti.CodigoArticulo + "', '" + arti.Nombre + "', '" + arti.Descripcion + "', @idMarca, @idCategoria, " + arti.Precio + ")");
+                                
+                datos.agregarParametro("@idMarca", arti.Marca.Id);
+                datos.agregarParametro("@idCategoria", arti.Categoria.Id);
+
                 datos.ejecutarAccion();
 
             }
