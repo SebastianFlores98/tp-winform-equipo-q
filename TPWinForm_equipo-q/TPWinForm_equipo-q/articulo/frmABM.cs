@@ -128,6 +128,7 @@ namespace TPWinForm_equipo_q.Articulo
             cboCategoria.Enabled = !detalle;
             txtUrlImagen.Enabled = !detalle;
             btnGrabar.Visible = !detalle;
+            btnAgregarImagen.Visible = !detalle;
         }
 
         private bool cargarImagen(string imagen)
