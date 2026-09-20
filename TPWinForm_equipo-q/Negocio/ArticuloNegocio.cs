@@ -144,7 +144,6 @@ namespace Negocio
             }
         }
 
-
         /*Modificar BD*/
         public void modificar(Articulo art)
         {
@@ -152,19 +151,50 @@ namespace Negocio
 
             try
             {
-                datosArticulo.setearConsulta("UPDATE ARTICULOS SET Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, IdMarca = @idMarca, IdCategoria = @idCategoria, Precio = @precio WHERE Id = @id");
+                datosArticulo.setearConsulta(
+                    "UPDATE ARTICULOS " +
+                    "SET Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, IdMarca = @idMarca, IdCategoria = @idCategoria, Precio = @precio " +
+                    "WHERE Id = @id");
 
                 datosArticulo.agregarParametro("@id", art.Id);
                 datosArticulo.agregarParametro("@codigo", art.CodigoArticulo);
                 datosArticulo.agregarParametro("@nombre", art.Nombre);
                 datosArticulo.agregarParametro("@descripcion", art.Descripcion);
-                datosArticulo.agregarParametro("@idMarca", art.Marca.Id);       
-                datosArticulo.agregarParametro("@idCategoria", art.Categoria.Id); 
+                datosArticulo.agregarParametro("@idMarca", art.Marca.Id);
+                datosArticulo.agregarParametro("@idCategoria", art.Categoria.Id);
                 datosArticulo.agregarParametro("@precio", art.Precio);
-                //datosArticulo.agregarParametro("@img", art.UrlImagen);
 
                 datosArticulo.ejecutarAccion();
+                datosArticulo.cerrarConexion();
 
+                // Eliminamos todas las imagenes y volvemos a cargar 
+                ConexionDatos datosImagenesBorrar = new ConexionDatos();
+                datosImagenesBorrar.setearConsulta("DELETE FROM IMAGENES WHERE IdArticulo = @idArticulo");
+                datosImagenesBorrar.agregarParametro("@idArticulo", art.Id);
+
+                datosImagenesBorrar.ejecutarAccion();
+                datosImagenesBorrar.cerrarConexion();
+
+                if (art.Imagenes != null && art.Imagenes.Count > 0)
+                {
+                    foreach (string url in art.Imagenes)
+                    {
+                        if (!string.IsNullOrEmpty(url))
+                        {
+                            ConexionDatos datosImagenesInsertar = new ConexionDatos();
+
+                            datosImagenesInsertar.setearConsulta(
+                                "INSERT INTO IMAGENES (IdArticulo, ImagenUrl) " +
+                                "VALUES (@idArticulo, @imagenUrl)"
+                            );
+                            datosImagenesInsertar.agregarParametro("@idArticulo", art.Id);
+                            datosImagenesInsertar.agregarParametro("@imagenUrl", url);
+
+                            datosImagenesInsertar.ejecutarAccion();
+                            datosImagenesInsertar.cerrarConexion();
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
