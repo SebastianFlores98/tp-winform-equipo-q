@@ -213,6 +213,12 @@ namespace Negocio
 
             try
             {
+                datos.setearConsulta("DELETE FROM IMAGENES WHERE IdArticulo = @id");
+                datos.agregarParametro("@id", id);
+                datos.ejecutarAccion();
+                datos.cerrarConexion(); 
+
+                datos = new ConexionDatos(); 
                 datos.setearConsulta("DELETE FROM ARTICULOS WHERE Id = @id");
                 datos.agregarParametro("@id", id);
                 datos.ejecutarAccion();
