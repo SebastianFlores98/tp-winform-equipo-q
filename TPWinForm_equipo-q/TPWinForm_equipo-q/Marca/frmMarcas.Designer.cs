@@ -93,6 +93,7 @@
             this.dgvMarcas.Location = new System.Drawing.Point(121, 133);
             this.dgvMarcas.Margin = new System.Windows.Forms.Padding(2);
             this.dgvMarcas.Name = "dgvMarcas";
+            this.dgvMarcas.ReadOnly = true;
             this.dgvMarcas.RowHeadersWidth = 51;
             this.dgvMarcas.RowTemplate.Height = 24;
             this.dgvMarcas.Size = new System.Drawing.Size(237, 208);

@@ -43,12 +43,27 @@ namespace TPWinForm_equipo_q.Marca
             Cargar();
         }
 
-
+        private bool validarSeleccionado()
+        {
+            if (dgvMarcas.CurrentRow == null || dgvMarcas.CurrentRow.DataBoundItem == null)
+            {
+                MessageBox.Show("Por favor, seleccione una marca de la lista.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
 
 
 
         private void btnEliminarMarca_Click(object sender, EventArgs e)
         {
+
+            if (!validarSeleccionado())
+            {
+                return;
+            }
+
+
             Dominio.Marca seleccionado = (Dominio.Marca)dgvMarcas.CurrentRow.DataBoundItem;
 
             DialogResult respuesta = MessageBox.Show(
@@ -82,6 +97,11 @@ namespace TPWinForm_equipo_q.Marca
 
         private void btnModificarMarca_Click(object sender, EventArgs e)
         {
+            if (!validarSeleccionado())
+            {
+                return;
+            }
+
             Dominio.Marca seleccionado = (Dominio.Marca)dgvMarcas.CurrentRow.DataBoundItem;
             frmMarcasABM frmModificarMarca = new frmMarcasABM(seleccionado);
             frmModificarMarca.ShowDialog();
