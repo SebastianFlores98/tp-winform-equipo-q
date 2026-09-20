@@ -95,13 +95,44 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("insert into ARTICULOS (Codigo, Nombre, Descripcion, idMArca, idCategoria, Precio)values('" + arti.CodigoArticulo + "', '" + arti.Nombre + "', '" + arti.Descripcion + "', @idMarca, @idCategoria, " + arti.Precio + ")");
-                                
+                datos.setearConsulta(
+                    "INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion, idMarca, idCategoria, Precio) " +
+                    "OUTPUT INSERTED.Id " + 
+                    "VALUES (@codigo, @nombre, @descripcion, @idMarca, @idCategoria, @precio)"
+                 );
+
+                datos.agregarParametro("@codigo", arti.CodigoArticulo);
+                datos.agregarParametro("@nombre", arti.Nombre);
+                datos.agregarParametro("@descripcion", arti.Descripcion);
                 datos.agregarParametro("@idMarca", arti.Marca.Id);
                 datos.agregarParametro("@idCategoria", arti.Categoria.Id);
+                datos.agregarParametro("@precio", arti.Precio);
 
-                datos.ejecutarAccion();
+                int idArticuloNuevo = datos.ejecutarAccionScalar();
 
+                datos.cerrarConexion(); 
+
+                // Recorremos la lista de imagenes para insertarlas a la tabla (IMAGENES)
+                if (arti.Imagenes != null && arti.Imagenes.Count > 0 && idArticuloNuevo > 0)
+                {
+                    foreach (string url in arti.Imagenes)
+                    {
+                        if (!string.IsNullOrEmpty(url))
+                        {
+                            datos = new ConexionDatos(); 
+
+                            datos.setearConsulta(
+                                "INSERT INTO IMAGENES (IdArticulo, ImagenUrl) " +
+                                "VALUES (@idArticulo, @imagenUrl)"
+                            );
+                            datos.agregarParametro("@idArticulo", idArticuloNuevo);
+                            datos.agregarParametro("@imagenUrl", url);
+
+                            datos.ejecutarAccion(); 
+                            datos.cerrarConexion(); 
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -112,6 +143,7 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
 
         /*Modificar BD*/
         public void modificar(Articulo art)

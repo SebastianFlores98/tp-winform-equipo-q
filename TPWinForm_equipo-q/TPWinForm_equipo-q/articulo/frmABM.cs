@@ -18,7 +18,7 @@ namespace TPWinForm_equipo_q.Articulo
         private Dominio.Articulo articulo = null;
         private bool detalle = false;
 
-        private List<string> listaImagenes;
+        private List<string> listaImagenes = new List<string>();
         private int imagenActual = 0; 
 
         // Muestra las imagenes 
@@ -130,15 +130,24 @@ namespace TPWinForm_equipo_q.Articulo
             btnGrabar.Visible = !detalle;
         }
 
-        private void cargarImagen(string imagen)
+        private bool cargarImagen(string imagen)
         {
+            // Consulto si el campo de imagen está vacío
+            if (string.IsNullOrEmpty(imagen) || imagen == "Sin Imagen")
+            {
+                pbxCarrusel.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS5DKzdprfHmIYRpEfNNPVRYPDfh0Bvjjw_Ud_yRIwSw&s=10");
+                return false;
+            }
+
             try
             {
                 pbxCarrusel.Load(imagen);
+                return true; 
             }
             catch (Exception)
             {
                 pbxCarrusel.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS5DKzdprfHmIYRpEfNNPVRYPDfh0Bvjjw_Ud_yRIwSw&s=10");
+                return false; 
             }
         }
 
@@ -188,9 +197,9 @@ namespace TPWinForm_equipo_q.Articulo
                 articulo.Marca = (Dominio.Marca)cboMarca.SelectedItem;
                 articulo.Categoria = (Dominio.Categoria)cboCategoria.SelectedItem;
                 articulo.Precio = decimal.Parse(txtPrecio.Text);
-                articulo.UrlImagen = txtUrlImagen.Text;
+                articulo.Imagenes = listaImagenes;
 
-                if(articulo.Id != 0)
+                if (articulo.Id != 0)
                 {
                     negocio.modificar(articulo);
                     MessageBox.Show("Modificado exitosamente");
@@ -234,6 +243,31 @@ namespace TPWinForm_equipo_q.Articulo
                 imagenActual++;
                 mostrarImagenActual();
             }
+        }
+
+        private void btnAgregarImagen_Click(object sender, EventArgs e)
+        {
+            string urlIngresada = txtUrlImagen.Text.Trim();
+
+            if (!cargarImagen(urlIngresada))
+            {
+                MessageBox.Show("No se puede agregar.", "Enlace Inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; 
+            }
+
+            // Verifico si ya fue agregada antes
+            if (listaImagenes.Contains(urlIngresada))
+            {
+                MessageBox.Show("Esta imagen ya se encuentra añadida en este artículo.", "Imagen Duplicada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            listaImagenes.Add(urlIngresada);
+
+            imagenActual = listaImagenes.Count - 1;
+            mostrarImagenActual();
+
+            txtUrlImagen.Clear();
         }
     }
 }

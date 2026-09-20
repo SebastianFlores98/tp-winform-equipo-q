@@ -25,7 +25,7 @@ namespace Datos
              * NOTA: Para desarrollo local usamos SQL Server en Docker (puerto 1433).
              * Si se ejecuta con SQL Server Express local, cambiar a: "server=.\SQLEXPRESS; ..."
             */
-            conexion = new SqlConnection("Server=localhost,1433;Database=CATALOGO_P3_DB;User Id=sa;Password=BaseDatos#2;TrustServerCertificate=True;");
+            conexion = new SqlConnection("Server=localhost,1433;Database=CATALOGO_P3_DB;User Id=sa;Password=PASSWORD;TrustServerCertificate=True;");
             comando = new SqlCommand();
         }
 
@@ -75,6 +75,28 @@ namespace Datos
                 lector.Close();
             }
             conexion.Close();
+        }
+
+        public int ejecutarAccionScalar()
+        {
+            try
+            {
+                comando.Connection = conexion;
+                conexion.Open();
+
+                // Capturamos el ID Nuevo
+                object resultado = comando.ExecuteScalar();
+
+                if (resultado != null)
+                {
+                    return Convert.ToInt32(resultado);
+                }
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

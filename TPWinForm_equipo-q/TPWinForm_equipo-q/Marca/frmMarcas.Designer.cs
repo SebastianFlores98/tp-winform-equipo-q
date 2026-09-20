@@ -34,7 +34,7 @@
             this.btnAgregarMarca = new System.Windows.Forms.Button();
             this.textBoxBuscador = new System.Windows.Forms.TextBox();
             this.dgvMarcas = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblBuscarMarca = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +52,7 @@
             // btnEliminarMarca
             // 
             this.btnEliminarMarca.Location = new System.Drawing.Point(377, 426);
-            this.btnEliminarMarca.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEliminarMarca.Margin = new System.Windows.Forms.Padding(4);
             this.btnEliminarMarca.Name = "btnEliminarMarca";
             this.btnEliminarMarca.Size = new System.Drawing.Size(100, 28);
             this.btnEliminarMarca.TabIndex = 25;
@@ -63,7 +63,7 @@
             // btnModificarMarca
             // 
             this.btnModificarMarca.Location = new System.Drawing.Point(268, 426);
-            this.btnModificarMarca.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnModificarMarca.Margin = new System.Windows.Forms.Padding(4);
             this.btnModificarMarca.Name = "btnModificarMarca";
             this.btnModificarMarca.Size = new System.Drawing.Size(100, 28);
             this.btnModificarMarca.TabIndex = 24;
@@ -73,7 +73,7 @@
             // btnAgregarMarca
             // 
             this.btnAgregarMarca.Location = new System.Drawing.Point(161, 426);
-            this.btnAgregarMarca.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAgregarMarca.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgregarMarca.Name = "btnAgregarMarca";
             this.btnAgregarMarca.Size = new System.Drawing.Size(100, 28);
             this.btnAgregarMarca.TabIndex = 23;
@@ -82,10 +82,10 @@
             // 
             // textBoxBuscador
             // 
-            this.textBoxBuscador.Location = new System.Drawing.Point(236, 133);
-            this.textBoxBuscador.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxBuscador.Location = new System.Drawing.Point(202, 133);
+            this.textBoxBuscador.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxBuscador.Name = "textBoxBuscador";
-            this.textBoxBuscador.Size = new System.Drawing.Size(240, 22);
+            this.textBoxBuscador.Size = new System.Drawing.Size(275, 22);
             this.textBoxBuscador.TabIndex = 22;
             // 
             // dgvMarcas
@@ -99,30 +99,31 @@
             this.dgvMarcas.Size = new System.Drawing.Size(316, 256);
             this.dgvMarcas.TabIndex = 21;
             // 
-            // label1
+            // lblBuscarMarca
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(177, 137);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 16);
-            this.label1.TabIndex = 28;
-            this.label1.Text = "Filtro";
+            this.lblBuscarMarca.AutoSize = true;
+            this.lblBuscarMarca.Location = new System.Drawing.Point(158, 136);
+            this.lblBuscarMarca.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBuscarMarca.Name = "lblBuscarMarca";
+            this.lblBuscarMarca.Size = new System.Drawing.Size(39, 16);
+            this.lblBuscarMarca.TabIndex = 28;
+            this.lblBuscarMarca.Text = "Filtro:";
             // 
             // frmMarcas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(656, 543);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblBuscarMarca);
             this.Controls.Add(this.lblMarcas);
             this.Controls.Add(this.btnEliminarMarca);
             this.Controls.Add(this.btnModificarMarca);
             this.Controls.Add(this.btnAgregarMarca);
             this.Controls.Add(this.textBoxBuscador);
             this.Controls.Add(this.dgvMarcas);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMarcas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMarcas";
             this.Load += new System.EventHandler(this.frmMarcas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).EndInit();
@@ -139,6 +140,6 @@
         private System.Windows.Forms.Button btnAgregarMarca;
         private System.Windows.Forms.TextBox textBoxBuscador;
         private System.Windows.Forms.DataGridView dgvMarcas;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblBuscarMarca;
     }
 }
