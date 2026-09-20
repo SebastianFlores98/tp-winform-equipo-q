@@ -60,7 +60,6 @@ namespace TPWinForm_equipo_q.Marca
             if (respuesta == DialogResult.Yes)
             {
                 MarcaNegocio negocio = new MarcaNegocio();
-                // 1. Ponemos el bloque "try" para intentar ejecutar el código
                 try
                 {
                     negocio.Eliminar(seleccionado.Id);
