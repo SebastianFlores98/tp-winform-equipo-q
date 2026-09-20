@@ -30,11 +30,17 @@ namespace TPWinForm_equipo_q.Categoria
         private void btnModificar_Click(object sender, EventArgs e)
         {
             Dominio.Categoria seleccionada;
-            seleccionada = (Dominio.Categoria)dgvCategoria.CurrentRow.DataBoundItem;
-
-            frmAgregarCategoria modificarCategoria = new frmAgregarCategoria(seleccionada);
-            modificarCategoria.ShowDialog();
-            Cargar();
+            if(dgvCategoria.CurrentRow != null)
+            {
+                seleccionada = (Dominio.Categoria)dgvCategoria.CurrentRow.DataBoundItem;
+                frmAgregarCategoria modificarCategoria = new frmAgregarCategoria(seleccionada);
+                modificarCategoria.ShowDialog();
+                Cargar();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione una categoria");
+            }            
         }
 
         private void frmCategorias_Load(object sender, EventArgs e)
@@ -49,7 +55,7 @@ namespace TPWinForm_equipo_q.Categoria
             {
                 listaCategoria = listado.listar();
                 dgvCategoria.DataSource = listaCategoria;
-                dgvCategoria.Columns["Id"].Visible = false;
+                ocultarColumnas();
             }
             catch (Exception ex)
             {
@@ -58,15 +64,60 @@ namespace TPWinForm_equipo_q.Categoria
             }
         }
 
+        private void ocultarColumnas()
+        {
+            dgvCategoria.Columns["Id"].Visible = false;
+        }
+
         private void dgvCategoria_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvCategoria.SelectedRows.Count > 0)
+            if (dgvCategoria.SelectedRows.Count != 0)
             {
                 Dominio.Categoria seleccionado = (Dominio.Categoria)dgvCategoria.CurrentRow.DataBoundItem;
             }
         }
 
-        private void textBoxBuscador_TextChanged(object sender, EventArgs e)
+        private void textBoxBuscadorFiltro_TextChanged(object sender, EventArgs e)
+        {
+            List<Dominio.Categoria> listaFiltrada;
+            string filtro = textBoxBuscadorFiltro.Text;
+
+            if (filtro.Length >= 2)
+            {
+                listaFiltrada = listaCategoria.FindAll(x => x.Descripcion.ToUpper().Contains(filtro.ToUpper()));
+            }
+            else
+            {
+                listaFiltrada = listaCategoria;
+            }
+
+            dgvCategoria.DataSource = null;
+            dgvCategoria.DataSource = listaFiltrada;
+            ocultarColumnas();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            CategoriaNegocio negocio = new CategoriaNegocio();
+            Dominio.Categoria seleccionada;
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("¿Seguro que querés eliminar esta Categoria?", "Eliminar Categoria", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (respuesta == DialogResult.Yes)
+                {
+                    seleccionada = (Dominio.Categoria)dgvCategoria.CurrentRow.DataBoundItem;
+                    negocio.eliminar(seleccionada.Id);
+                    Cargar();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void textBoxBuscadorFiltro_KeyPress(object sender, KeyPressEventArgs e)
         {
 
         }

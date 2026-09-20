@@ -87,5 +87,10 @@ namespace TPWinForm_equipo_q.Marca
             frmModificarMarca.ShowDialog();
             Cargar();
         }
+
+        private void textBoxBuscador_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

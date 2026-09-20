@@ -50,6 +50,12 @@ namespace TPWinForm_equipo_q.Categoria
 
                 try
                 {
+                    if(Validaciones.ValidarDescripcion(txtAgregarCategoria.Text))
+                        {
+                        MessageBox.Show("La Descripción no puede estar vacía", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                        }
+
                     if (categoria == null)
                         categoria = new Dominio.Categoria();
 

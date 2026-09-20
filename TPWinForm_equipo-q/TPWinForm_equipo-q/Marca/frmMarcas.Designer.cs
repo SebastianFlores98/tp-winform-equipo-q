@@ -84,12 +84,13 @@
             this.textBoxBuscador.Name = "textBoxBuscador";
             this.textBoxBuscador.Size = new System.Drawing.Size(181, 20);
             this.textBoxBuscador.TabIndex = 22;
+            this.textBoxBuscador.TextChanged += new System.EventHandler(this.textBoxBuscador_TextChanged);
             // 
             // dgvMarcas
             // 
             this.dgvMarcas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMarcas.Location = new System.Drawing.Point(121, 133);
-            this.dgvMarcas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvMarcas.Margin = new System.Windows.Forms.Padding(2);
             this.dgvMarcas.Name = "dgvMarcas";
             this.dgvMarcas.RowHeadersWidth = 51;
             this.dgvMarcas.RowTemplate.Height = 24;

@@ -81,5 +81,21 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void eliminar(int id)
+        {
+            try
+            {
+                ConexionDatos datos = new ConexionDatos();
+                datos.setearConsulta("delete from CATEGORIAS where id = @id");
+                datos.agregarParametro("@id", id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

@@ -32,7 +32,7 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
-            this.textBoxBuscador = new System.Windows.Forms.TextBox();
+            this.textBoxBuscadorFiltro = new System.Windows.Forms.TextBox();
             this.dgvCategoria = new System.Windows.Forms.DataGridView();
             this.lblFiltro = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategoria)).BeginInit();
@@ -56,6 +56,7 @@
             this.btnEliminar.TabIndex = 4;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnModificar
             // 
@@ -77,13 +78,14 @@
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // textBoxBuscador
+            // textBoxBuscadorFiltro
             // 
-            this.textBoxBuscador.Location = new System.Drawing.Point(98, 53);
-            this.textBoxBuscador.Name = "textBoxBuscador";
-            this.textBoxBuscador.Size = new System.Drawing.Size(197, 20);
-            this.textBoxBuscador.TabIndex = 0;
-            this.textBoxBuscador.TextChanged += new System.EventHandler(this.textBoxBuscador_TextChanged);
+            this.textBoxBuscadorFiltro.Location = new System.Drawing.Point(98, 53);
+            this.textBoxBuscadorFiltro.Name = "textBoxBuscadorFiltro";
+            this.textBoxBuscadorFiltro.Size = new System.Drawing.Size(197, 20);
+            this.textBoxBuscadorFiltro.TabIndex = 0;
+            this.textBoxBuscadorFiltro.TextChanged += new System.EventHandler(this.textBoxBuscadorFiltro_TextChanged);
+            this.textBoxBuscadorFiltro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxBuscadorFiltro_KeyPress);
             // 
             // dgvCategoria
             // 
@@ -118,7 +120,7 @@
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.textBoxBuscador);
+            this.Controls.Add(this.textBoxBuscadorFiltro);
             this.Controls.Add(this.dgvCategoria);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(391, 371);
@@ -139,7 +141,7 @@
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnAgregar;
-        private System.Windows.Forms.TextBox textBoxBuscador;
+        private System.Windows.Forms.TextBox textBoxBuscadorFiltro;
         private System.Windows.Forms.DataGridView dgvCategoria;
         private System.Windows.Forms.Label lblFiltro;
     }
