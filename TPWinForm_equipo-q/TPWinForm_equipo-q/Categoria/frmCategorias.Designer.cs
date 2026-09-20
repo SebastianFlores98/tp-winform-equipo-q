@@ -81,6 +81,7 @@
             // textBoxBuscadorFiltro
             // 
             this.textBoxBuscadorFiltro.Location = new System.Drawing.Point(98, 53);
+            this.textBoxBuscadorFiltro.MaxLength = 50;
             this.textBoxBuscadorFiltro.Name = "textBoxBuscadorFiltro";
             this.textBoxBuscadorFiltro.Size = new System.Drawing.Size(197, 20);
             this.textBoxBuscadorFiltro.TabIndex = 0;

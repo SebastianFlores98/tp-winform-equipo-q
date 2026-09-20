@@ -81,6 +81,7 @@
             // textBoxBuscador
             // 
             this.textBoxBuscador.Location = new System.Drawing.Point(177, 108);
+            this.textBoxBuscador.MaxLength = 50;
             this.textBoxBuscador.Name = "textBoxBuscador";
             this.textBoxBuscador.Size = new System.Drawing.Size(181, 20);
             this.textBoxBuscador.TabIndex = 22;

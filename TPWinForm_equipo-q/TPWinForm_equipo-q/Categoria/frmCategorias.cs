@@ -110,7 +110,7 @@ namespace TPWinForm_equipo_q.Categoria
                 seleccionada = (Dominio.Categoria)dgvCategoria.CurrentRow.DataBoundItem;
 
                 //validamos que la categoria no este siendo usada por un articulo
-                if(Negocio.Validaciones.CategoriaEnUso(seleccionada.Id))
+                if(Negocio.Validaciones.CategoriaEnUso(seleccionada.Id)) 
                 {
                     MessageBox.Show("Categoria en uso por uno o más articulos, no puede ser eliminada");
                     return;
