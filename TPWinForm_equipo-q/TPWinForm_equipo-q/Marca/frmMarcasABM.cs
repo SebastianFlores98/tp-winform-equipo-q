@@ -65,8 +65,10 @@ namespace TPWinForm_equipo_q.Marca
                 else
                 {
                     negocio.agregar(Marca);
+
                     MessageBox.Show("Agregado exitosamente");
                 }
+               
                 Close();
             }
             catch (Exception ex)
