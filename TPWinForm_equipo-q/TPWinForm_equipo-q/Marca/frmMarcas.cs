@@ -1,4 +1,5 @@
-﻿using Negocio;
+﻿using Dominio;
+using Negocio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,16 +9,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TPWinForm_equipo_q.Articulo;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace TPWinForm_equipo_q.Marca
 {
     public partial class frmMarcas : Form
     {
-
+   
         private List<Dominio.Marca> listadoMarca;
+
         public frmMarcas()
         {
             InitializeComponent();
+           
         }
 
         private void Cargar()
@@ -37,6 +42,10 @@ namespace TPWinForm_equipo_q.Marca
         {
             Cargar();
         }
+
+
+
+
 
         private void btnEliminarMarca_Click(object sender, EventArgs e)
         {
@@ -63,6 +72,21 @@ namespace TPWinForm_equipo_q.Marca
                     MessageBox.Show(ex.Message, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+        }
+
+        private void btnAgregarMarca_Click(object sender, EventArgs e)
+        {
+            frmMarcasABM frmAgregarMarca = new frmMarcasABM();
+            frmAgregarMarca.ShowDialog();
+            Cargar();
+        }
+
+        private void btnModificarMarca_Click(object sender, EventArgs e)
+        {
+            Dominio.Marca seleccionado = (Dominio.Marca)dgvMarcas.CurrentRow.DataBoundItem;
+            frmMarcasABM frmModificarMarca = new frmMarcasABM(seleccionado);
+            frmModificarMarca.ShowDialog();
+            Cargar();
         }
     }
 }

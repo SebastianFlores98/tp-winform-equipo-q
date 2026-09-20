@@ -80,6 +80,57 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+
+        /*Agregar BD*/
+        public void agregar(Marca Marca)
+        {
+            ConexionDatos datos = new ConexionDatos();
+
+            try
+            {
+                datos.setearConsulta("insert into MARCAS (Descripcion)values(@descripcion)");
+                datos.agregarParametro("@descripcion", Marca.Descripcion);
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void modificar(Marca Marca)
+        {
+            ConexionDatos datosMarca = new ConexionDatos();
+
+            try
+            {
+                datosMarca.setearConsulta("UPDATE MARCAS SET Descripcion = @descripcion WHERE Id = @id");
+
+
+                datosMarca.agregarParametro("@descripcion", Marca.Descripcion);
+                datosMarca.agregarParametro("@id", Marca.Id);
+
+               
+
+                datosMarca.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datosMarca.cerrarConexion();
+            }
+        }
+
     }
 }
 
