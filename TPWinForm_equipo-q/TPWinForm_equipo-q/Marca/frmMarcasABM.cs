@@ -52,8 +52,12 @@ namespace TPWinForm_equipo_q.Marca
         {
             MarcaNegocio negocio = new MarcaNegocio();
             try
-            {           
-
+            {
+                if (Validaciones.ValidarDescripcion(txtDescripcion.Text))
+                {
+                    MessageBox.Show("La descripción no puede estar vacía.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 Marca.Descripcion = txtDescripcion.Text;
 
                 if (Marca.Id != 0)

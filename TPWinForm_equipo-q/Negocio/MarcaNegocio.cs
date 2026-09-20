@@ -33,32 +33,12 @@ namespace Negocio
                 finally { datos.cerrarConexion(); }
             }
 
-        // Consulto en la base si existe el IdMarca en la tabla ARTÍCULOS
-        public bool ExisteEnArticulos(int id)
-        {
-            ConexionDatos datos = new ConexionDatos();
-            try
-            {
-                datos.setearConsulta("SELECT IdMarca FROM ARTICULOS WHERE IdMarca = @id");
-                datos.agregarParametro("@id", id);
-                datos.ejecutarLectura(); 
-
-                return datos.Lector.Read();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-        }
+  
 
         /*Eliminar BD*/
         public void Eliminar(int id)
         {
-            if (ExisteEnArticulos(id))
+            if (Validaciones.MarcaEnUso(id))
             {
                 throw new Exception("No se puede eliminar porque el ID está en uso en la tabla ARTÍCULOS.");
             }
