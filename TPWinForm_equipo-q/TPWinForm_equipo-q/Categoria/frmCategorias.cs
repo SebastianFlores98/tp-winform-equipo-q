@@ -30,7 +30,7 @@ namespace TPWinForm_equipo_q.Categoria
         private void btnModificar_Click(object sender, EventArgs e)
         {
             Dominio.Categoria seleccionada;
-            if(dgvCategoria.CurrentRow != null)
+            if (dgvCategoria.CurrentRow != null)
             {
                 seleccionada = (Dominio.Categoria)dgvCategoria.CurrentRow.DataBoundItem;
                 frmAgregarCategoria modificarCategoria = new frmAgregarCategoria(seleccionada);
@@ -40,7 +40,7 @@ namespace TPWinForm_equipo_q.Categoria
             else
             {
                 MessageBox.Show("Por favor, seleccione una categoria");
-            }            
+            }
         }
 
         private void frmCategorias_Load(object sender, EventArgs e)
@@ -102,10 +102,24 @@ namespace TPWinForm_equipo_q.Categoria
             Dominio.Categoria seleccionada;
             try
             {
+                if(dgvCategoria.CurrentRow == null)
+                {
+                    MessageBox.Show("Debes seleccionar una Categoria");
+                    return;
+                }
+                seleccionada = (Dominio.Categoria)dgvCategoria.CurrentRow.DataBoundItem;
+
+                //validamos que la categoria no este siendo usada por un articulo
+                if(Negocio.Validaciones.CategoriaEnUso(seleccionada.Id))
+                {
+                    MessageBox.Show("Categoria en uso por uno o más articulos, no puede ser eliminada");
+                    return;
+                }
+
                 DialogResult respuesta = MessageBox.Show("¿Seguro que querés eliminar esta Categoria?", "Eliminar Categoria", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (respuesta == DialogResult.Yes)
                 {
-                    seleccionada = (Dominio.Categoria)dgvCategoria.CurrentRow.DataBoundItem;
+
                     negocio.eliminar(seleccionada.Id);
                     Cargar();
                 }
@@ -121,5 +135,5 @@ namespace TPWinForm_equipo_q.Categoria
         {
 
         }
-    }    
+    }
 }
