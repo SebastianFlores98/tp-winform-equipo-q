@@ -25,7 +25,7 @@ namespace Datos
              * NOTA: Para desarrollo local usamos SQL Server en Docker (puerto 1433).
              * Si se ejecuta con SQL Server Express local, cambiar a: "server=.\SQLEXPRESS; ..."
             */
-            conexion = new SqlConnection("Server=localhost,1433;Database=CATALOGO_P3_DB;User Id=sa;Password=Sebas41151179#;TrustServerCertificate=True;");
+            conexion = new SqlConnection("Server=localhost,1433;Database=CATALOGO_P3_DB;User Id=sa;Password=BaseDatos#2;TrustServerCertificate=True;");
             comando = new SqlCommand();
         }
 

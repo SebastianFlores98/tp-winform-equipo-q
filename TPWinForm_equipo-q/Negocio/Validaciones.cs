@@ -45,6 +45,15 @@ namespace Negocio
             catch (Exception ex) { throw ex; }
             finally { datos.cerrarConexion(); }
         }
+
+        public static bool SoloNumeros(string cadena)
+        {
+            foreach (char caracter in cadena)
+            {
+                if (!(char.IsNumber(caracter))) { return false; }
+            }
+            return true;
+        }
     }
 }
 

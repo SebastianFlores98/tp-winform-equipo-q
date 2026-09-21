@@ -126,7 +126,7 @@
             // txtId
             // 
             this.txtId.Location = new System.Drawing.Point(115, 18);
-            this.txtId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtId.Margin = new System.Windows.Forms.Padding(2);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(168, 20);
             this.txtId.TabIndex = 0;
@@ -134,7 +134,7 @@
             // txtCodigo
             // 
             this.txtCodigo.Location = new System.Drawing.Point(115, 55);
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(2);
             this.txtCodigo.MaxLength = 50;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(168, 20);
@@ -143,7 +143,7 @@
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(115, 86);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(2);
             this.txtNombre.MaxLength = 50;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(168, 20);
@@ -152,7 +152,7 @@
             // txtDescripcion
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(115, 116);
-            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(2);
             this.txtDescripcion.MaxLength = 150;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(168, 20);
@@ -161,17 +161,18 @@
             // txtPrecio
             // 
             this.txtPrecio.Location = new System.Drawing.Point(115, 214);
-            this.txtPrecio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPrecio.Margin = new System.Windows.Forms.Padding(2);
             this.txtPrecio.MaxLength = 50;
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(168, 20);
             this.txtPrecio.TabIndex = 6;
+            this.txtPrecio.TextChanged += new System.EventHandler(this.txtPrecio_TextChanged);
             // 
             // pbxCarrusel
             // 
             this.pbxCarrusel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbxCarrusel.Location = new System.Drawing.Point(340, 23);
-            this.pbxCarrusel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbxCarrusel.Margin = new System.Windows.Forms.Padding(2);
             this.pbxCarrusel.Name = "pbxCarrusel";
             this.pbxCarrusel.Size = new System.Drawing.Size(220, 209);
             this.pbxCarrusel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -185,7 +186,7 @@
             this.cboMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMarca.FormattingEnabled = true;
             this.cboMarca.Location = new System.Drawing.Point(115, 148);
-            this.cboMarca.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboMarca.Margin = new System.Windows.Forms.Padding(2);
             this.cboMarca.Name = "cboMarca";
             this.cboMarca.Size = new System.Drawing.Size(168, 21);
             this.cboMarca.TabIndex = 4;
@@ -197,7 +198,7 @@
             this.cboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCategoria.FormattingEnabled = true;
             this.cboCategoria.Location = new System.Drawing.Point(115, 180);
-            this.cboCategoria.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboCategoria.Margin = new System.Windows.Forms.Padding(2);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(168, 21);
             this.cboCategoria.TabIndex = 5;
@@ -206,7 +207,7 @@
             // 
             this.btnGrabar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGrabar.Location = new System.Drawing.Point(212, 295);
-            this.btnGrabar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnGrabar.Margin = new System.Windows.Forms.Padding(2);
             this.btnGrabar.Name = "btnGrabar";
             this.btnGrabar.Size = new System.Drawing.Size(81, 32);
             this.btnGrabar.TabIndex = 8;
@@ -218,7 +219,7 @@
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Location = new System.Drawing.Point(312, 295);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(85, 32);
             this.btnCancelar.TabIndex = 9;
@@ -229,7 +230,7 @@
             // txtUrlImagen
             // 
             this.txtUrlImagen.Location = new System.Drawing.Point(115, 242);
-            this.txtUrlImagen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUrlImagen.Margin = new System.Windows.Forms.Padding(2);
             this.txtUrlImagen.MaxLength = 1000;
             this.txtUrlImagen.Name = "txtUrlImagen";
             this.txtUrlImagen.Size = new System.Drawing.Size(168, 20);
@@ -250,7 +251,7 @@
             // 
             this.btnAnterior.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAnterior.Location = new System.Drawing.Point(372, 242);
-            this.btnAnterior.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAnterior.Margin = new System.Windows.Forms.Padding(2);
             this.btnAnterior.Name = "btnAnterior";
             this.btnAnterior.Size = new System.Drawing.Size(81, 32);
             this.btnAnterior.TabIndex = 10;
@@ -262,7 +263,7 @@
             // 
             this.btnSiguiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSiguiente.Location = new System.Drawing.Point(458, 242);
-            this.btnSiguiente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSiguiente.Margin = new System.Windows.Forms.Padding(2);
             this.btnSiguiente.Name = "btnSiguiente";
             this.btnSiguiente.Size = new System.Drawing.Size(81, 32);
             this.btnSiguiente.TabIndex = 11;
@@ -274,7 +275,7 @@
             // 
             this.btnAgregarImagen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregarImagen.Location = new System.Drawing.Point(286, 238);
-            this.btnAgregarImagen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAgregarImagen.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarImagen.Name = "btnAgregarImagen";
             this.btnAgregarImagen.Size = new System.Drawing.Size(24, 28);
             this.btnAgregarImagen.TabIndex = 17;
@@ -309,7 +310,7 @@
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.lblId);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmABM";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ABM";

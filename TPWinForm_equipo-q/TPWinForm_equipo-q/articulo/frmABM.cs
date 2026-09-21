@@ -19,7 +19,7 @@ namespace TPWinForm_equipo_q.Articulo
         private bool detalle = false;
 
         private List<string> listaImagenes = new List<string>();
-        private int imagenActual = 0; 
+        private int imagenActual = 0;
 
         // Muestra las imagenes 
         private void mostrarImagenActual()
@@ -77,7 +77,7 @@ namespace TPWinForm_equipo_q.Articulo
 
             try
             {
-                cboMarca.DataSource = marcaNegocio.Listar(); 
+                cboMarca.DataSource = marcaNegocio.Listar();
                 cboMarca.ValueMember = "Id";
                 cboMarca.DisplayMember = "Descripcion";
 
@@ -108,7 +108,8 @@ namespace TPWinForm_equipo_q.Articulo
                 listaImagenes = imagenNegocio.ListarImagenes(articulo.Id);
 
                 mostrarImagenActual();
-            } else
+            }
+            else
             {
                 btnAnterior.Enabled = false;
                 btnSiguiente.Enabled = false;
@@ -143,12 +144,12 @@ namespace TPWinForm_equipo_q.Articulo
             try
             {
                 pbxCarrusel.Load(imagen);
-                return true; 
+                return true;
             }
             catch (Exception)
             {
                 pbxCarrusel.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS5DKzdprfHmIYRpEfNNPVRYPDfh0Bvjjw_Ud_yRIwSw&s=10");
-                return false; 
+                return false;
             }
         }
 
@@ -197,7 +198,19 @@ namespace TPWinForm_equipo_q.Articulo
                 articulo.Descripcion = txtDescripcion.Text;
                 articulo.Marca = (Dominio.Marca)cboMarca.SelectedItem;
                 articulo.Categoria = (Dominio.Categoria)cboCategoria.SelectedItem;
+                
+                if(string.IsNullOrWhiteSpace(txtPrecio.Text))
+                {
+                    MessageBox.Show("Ingresar Precio");
+                    return;
+                }
+                if(!Validaciones.SoloNumeros(txtPrecio.Text))
+                {
+                    MessageBox.Show("Ingresar solo Números", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 articulo.Precio = decimal.Parse(txtPrecio.Text);
+
                 articulo.Imagenes = listaImagenes;
 
                 if (articulo.Id != 0)
@@ -205,11 +218,14 @@ namespace TPWinForm_equipo_q.Articulo
                     negocio.modificar(articulo);
                     MessageBox.Show("Modificado exitosamente");
 
-                } else
+                }
+                else
                 {
                     negocio.agregar(articulo);
                     MessageBox.Show("Agregado exitosamente");
                 }
+
+                
                 Close();
             }
             catch (Exception ex)
@@ -253,7 +269,7 @@ namespace TPWinForm_equipo_q.Articulo
             if (!cargarImagen(urlIngresada))
             {
                 MessageBox.Show("No se puede agregar.", "Enlace Inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return; 
+                return;
             }
 
             // Verifico si ya fue agregada antes
@@ -269,6 +285,10 @@ namespace TPWinForm_equipo_q.Articulo
             mostrarImagenActual();
 
             txtUrlImagen.Clear();
+        }
+
+        private void txtPrecio_TextChanged(object sender, EventArgs e)//probando validar que solo se ingresen numeros
+        {
         }
     }
 }

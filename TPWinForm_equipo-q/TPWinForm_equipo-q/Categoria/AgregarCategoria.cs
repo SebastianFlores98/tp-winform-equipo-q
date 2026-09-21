@@ -80,6 +80,6 @@ namespace TPWinForm_equipo_q.Categoria
                     MessageBox.Show(ex.ToString());
                 }
             }
-        }
+        }      
     }
 }
