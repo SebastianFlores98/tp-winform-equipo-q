@@ -110,7 +110,21 @@ namespace TPWinForm_equipo_q.Marca
 
         private void textBoxBuscador_TextChanged(object sender, EventArgs e)
         {
+            List<Dominio.Marca> listaFiltrada;
+            string filtro = textBoxBuscador.Text;
 
+            if(filtro.Length >= 2)
+            {
+                listaFiltrada = listadoMarca.FindAll(x => x.Descripcion.ToUpper().Contains(filtro.ToUpper()));
+            }
+            else
+            {
+                listaFiltrada = listadoMarca;
+            }
+
+            dgvMarcas.DataSource = null;
+            dgvMarcas.DataSource = listaFiltrada;
+            ocultarColumnas();
         }
     }
 }
