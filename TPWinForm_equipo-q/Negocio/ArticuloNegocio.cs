@@ -232,5 +232,131 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+        public List<Articulo> filtrar(string campo, string criterio, string filtro)
+        {
+            List<Articulo> lista = new List<Articulo>();
+            ConexionDatos datos = new ConexionDatos();
+            try
+            {
+                string consulta = "SELECT " +
+                        "ART.Id, " +
+                        "ART.Codigo, " +
+                        "ART.Nombre, " +
+                        "ART.Descripcion, " +
+                        "MAR.Id AS IdMarca, " +
+                        "MAR.Descripcion AS DescripcionMarca, " +
+                        "CAT.Id AS IdCategoria, " +
+                        "CAT.Descripcion AS DescripcionCategoria, " +
+                        "ART.Precio, " +
+                        "IMG.ImagenUrl " +
+                    "FROM ARTICULOS ART " +
+                    "INNER JOIN MARCAS MAR ON MAR.Id = ART.IdMarca " +
+                    "LEFT JOIN CATEGORIAS CAT ON CAT.Id = ART.IdCategoria " +
+                    "LEFT JOIN (" +
+                        "SELECT IdArticulo, MIN(ImagenUrl) AS ImagenUrl " +
+                        "FROM IMAGENES " +
+                        "GROUP BY IdArticulo" +
+                    ") IMG ON IMG.IdArticulo = ART.Id where ";
+
+                if (campo == "Precio")
+                {
+                    switch (criterio)
+                    {
+                        case "Mayor a":
+                            consulta += "ART.Precio >" + filtro;
+                            break;
+                        case "Menor a":
+                            consulta += "ART.Precio <" + filtro;
+                            break;
+
+                        default:
+                            consulta += "ART.Precio =" + filtro;
+                            break;
+                    }
+
+                }
+                else if (campo == "Categoria")
+                {
+                    switch (criterio)
+                    {
+                        case "Comienza con":
+                            consulta += "CAT.Descripcion like '" + filtro + "%' ";
+                            break;
+                        case "Termina con":
+                            consulta += "CAT.Descripcion like '%" + filtro + "' ";
+                            break;
+
+                        default:
+                            consulta += "CAT.Descripcion like '%" + filtro + "%' ";
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (criterio)
+                    {
+                        case "Comienza con":
+                            consulta += "MAR.Descripcion like '" + filtro + "%' ";
+                            break;
+                        case "Termina con":
+                            consulta += "MAR.Descripcion like '%" + filtro + "' ";
+                            break;
+
+                        default:
+                            consulta += "MAR.Descripcion like '%" + filtro + "%' ";
+                            break;
+                    }
+                }
+                datos.setearConsulta(consulta);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Articulo aux = new Articulo();
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.CodigoArticulo = (string)datos.Lector["Codigo"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    aux.Marca = new Marca();
+                    aux.Marca.Id = (int)datos.Lector["IdMarca"];
+                    aux.Marca.Descripcion = (string)datos.Lector["DescripcionMarca"];
+
+                    // Contemplo NULL de categoria porque hay un artículo que posee un ID de categoria que no existe
+                    aux.Categoria = new Categoria();
+                    if (!(datos.Lector["IdCategoria"] is DBNull))
+                    {
+                        aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
+                        aux.Categoria.Descripcion = (string)datos.Lector["DescripcionCategoria"];
+                    }
+                    else
+                    {
+                        aux.Categoria.Id = 0;
+                        aux.Categoria.Descripcion = "Sin Categoría";
+
+                    }
+
+                    aux.Precio = (decimal)datos.Lector["Precio"];
+
+                    // Contemplo NULL de imágenes
+                    if (!(datos.Lector["ImagenUrl"] is DBNull))
+                    {
+                        aux.UrlImagen = (string)datos.Lector["ImagenUrl"];
+                    }
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
+        }
     }
 }
