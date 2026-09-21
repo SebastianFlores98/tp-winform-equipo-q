@@ -187,17 +187,34 @@ namespace TPWinForm_equipo_q.Articulo
 
         private void btnFiltroAvanzado_Click(object sender, EventArgs e)
         {
+
             ArticuloNegocio negocioFiltro = new ArticuloNegocio();
             try
             {
-                string campo = cboCampo.SelectedItem.ToString();
-                string criterio = cboCriterio.SelectedItem.ToString();
+                string campo = null;
+                if (cboCampo.SelectedItem != null) campo = cboCampo.SelectedItem.ToString();
+
+                string criterio = null;
+                if (cboCriterio.SelectedItem != null) criterio = cboCriterio.SelectedItem.ToString();
+
                 string filtro = txtFiltroAvanzado.Text;
+
+                if (Validaciones.FiltroVacio(campo, criterio, filtro))
+                {
+                    MessageBox.Show("Completá campo, criterio y filtro antes de buscar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (campo == "Precio" && Validaciones.FiltroPrecioInvalido(filtro))
+                {
+                    MessageBox.Show("El filtro de Precio solo admite números.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 dgvArticulos.DataSource = negocioFiltro.filtrar(campo, criterio, filtro);
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.ToString());
             }
 

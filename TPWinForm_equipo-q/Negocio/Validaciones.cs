@@ -45,6 +45,19 @@ namespace Negocio
             catch (Exception ex) { throw ex; }
             finally { datos.cerrarConexion(); }
         }
+
+        // valida que los campos del filtro no esten vacios
+        public static bool FiltroVacio(string campo, string criterio, string filtro)
+        {
+            return string.IsNullOrWhiteSpace(campo) || string.IsNullOrWhiteSpace(criterio) || string.IsNullOrWhiteSpace(filtro);
+        }
+
+        // valida que el filtro de Precio sea un numero
+        public static bool FiltroPrecioInvalido(string valor)
+        {
+            decimal resultado;
+            return !decimal.TryParse(valor, out resultado);
+        }
     }
 }
 
